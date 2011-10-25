@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<project name="pim" default="jar">
+
+	<!-- Load all the default properties, and any the user wants    -->
+	<!-- to contribute (without having to type -D or edit this file -->
+	<property file="${user.home}/build.properties" />
+	<property file="${basedir}/build.properties" />
+	<property file="${basedir}/default.properties" />
+	<property name="test.junit.output.format" value="plain" />
+
+	<!-- the normal classpath -->
+	<path id="depends_jars">
+		<pathelement location="${build.classes.main}"/>
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<tstamp>
+		<format property="buildtime" pattern="yyyy-MM-dd HH:mm:ss" />
+	</tstamp>
+
+	<!-- ====================================================== -->
+	<!-- Stuff needed by all targets                            -->
+	<!-- ====================================================== -->
+	<target name="init" description="make initial dirs">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes.main}" />
+		<mkdir dir="${build.docs}" />
+		<mkdir dir="${build.javadoc}" />
+	</target>
+
+	<!-- ====================================================== -->
+	<!-- Clean all build file and deployed web app              -->
+	<!-- ====================================================== -->
+	<target name="clean" description="clean output dirs">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="help">
+		<echo message="" />
+		<echo message="building help" />
+		<echo message="------------------------------------------------------" />
+		<echo message="clean" />
+		<echo message="compile" />
+		<echo message="jar" />
+	</target>
+  
+	<!-- ====================================================== -->
+	<!-- Comile all classes                                     -->
+	<!-- ====================================================== -->
+	<target name="compile" depends="init" description="Compile main Java sources">
+		<javac destdir="${build.classes.main}" encoding="${build.encoding}" includes="**/**/*.java" debug="${debug}" fork="${fork}" optimize="${optimize}" source="${source}" deprecation="${deprecation}">
+			<src path="${src.java.main}" />
+			<classpath refid="depends_jars" />
+		</javac>
+
+	</target>
+
+	<target name="jar" depends="compile" description="generate jar">
+		<copy todir="${build.classes.main}" preservelastmodified="true" flatten="false">
+			<fileset dir="${src.java.main}">
+				<exclude name="**/*.java" />
+			</fileset>		
+		</copy>
+		
+		<jar jarfile="${dist.jar.main}" compress="true">
+			<fileset dir="${build.classes.main}" includes="**/*.*" />  
+			<fileset dir="${basedir}/" includes="i18n/**/*.*" />
+			<zipfileset src="lib/sqlitejdbc-v056.jar" excludes="META-INF/*" />
+			<!-- <zipfileset src="lib/substance.jar" excludes="META-INF/*" /> -->
+			<!-- <zipfileset src="lib/nimrodlf-1.1a.jar" excludes="META-INF/*" /> -->				
+			<manifest>
+	        	<attribute name="Main-Class" value="xiatian.pim.main.Start" />
+	      	</manifest>
+		</jar>
+	</target>
+	
+	<target name="release" description="generate release jar">		
+		<jar jarfile="${dist.jar.src}" basedir="${src.java.main}" compress="true">
+			<fileset dir="${src.java.main}" includes="**/*.*"/>
+      		<fileset dir="${basedir}" includes="build.properties"/>
+      		<fileset dir="${basedir}" includes="build.xml"/>
+		</jar>
+	</target>
+</project>

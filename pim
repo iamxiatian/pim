@@ -1,0 +1,3 @@
+#!/bin/sh
+PIM_HOME=/home/xiatian/workspace/buge/pim
+java -cp $PIM_HOME/lib/sqlitejdbc-v056.jar:$PIM_HOME/lib/nimrodlf-1.1a.jar:$PIM_HOME/build/bin xiatian.pim.main.Start &
