@@ -35,48 +35,48 @@ import java.util.EventObject;
  */
 public class ActiveLineRangeEvent extends EventObject {
 
-	private int min;
-	private int max;
+    private int min;
+    private int max;
 
 
-	/**
-	 * Constructor.
-	 *
-	 * @param source The text area.
-	 * @param min The first line in the active line range, or
-	 *        <code>-1</code> if the line range is being cleared.
-	 * @param max The last line in the active line range, or
-	 *        <code>-1</code> if the line range is being cleared.
-	 */
-	public ActiveLineRangeEvent(RSyntaxTextArea source, int min, int max) {
-		super(source);
-		this.min = min;
-		this.max = max;
-	}
+    /**
+     * Constructor.
+     *
+     * @param source The text area.
+     * @param min    The first line in the active line range, or
+     *               <code>-1</code> if the line range is being cleared.
+     * @param max    The last line in the active line range, or
+     *               <code>-1</code> if the line range is being cleared.
+     */
+    public ActiveLineRangeEvent(RSyntaxTextArea source, int min, int max) {
+        super(source);
+        this.min = min;
+        this.max = max;
+    }
 
 
-	/**
-	 * Returns the last line in the active line range.
-	 *
-	 * @return The last line, or <code>-1</code> if the range is being
-	 *         cleared.
-	 * @see #getMin()
-	 */
-	public int getMax() {
-		return max;
-	}
+    /**
+     * Returns the last line in the active line range.
+     *
+     * @return The last line, or <code>-1</code> if the range is being
+     *         cleared.
+     * @see #getMin()
+     */
+    public int getMax() {
+        return max;
+    }
 
 
-	/**
-	 * Returns the first line in the active line range.
-	 *
-	 * @return The first line, or <code>-1</code> if the range is being
-	 *         cleared.
-	 * @see #getMax()
-	 */
-	public int getMin() {
-		return min;
-	}
+    /**
+     * Returns the first line in the active line range.
+     *
+     * @return The first line, or <code>-1</code> if the range is being
+     *         cleared.
+     * @see #getMax()
+     */
+    public int getMin() {
+        return min;
+    }
 
 
 }

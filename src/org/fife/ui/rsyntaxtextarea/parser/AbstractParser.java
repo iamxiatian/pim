@@ -35,74 +35,74 @@ import org.fife.ui.rsyntaxtextarea.focusabletip.FocusableTip;
  */
 public abstract class AbstractParser implements Parser {
 
-	/**
-	 * Whether this parser is enabled.  If this is <code>false</code>, then
-	 * this parser will not be run.
-	 */
-	private boolean enabled;
+    /**
+     * Whether this parser is enabled.  If this is <code>false</code>, then
+     * this parser will not be run.
+     */
+    private boolean enabled;
 
-	/**
-	 * Listens for events from {@link FocusableTip}s generated from this
-	 * parser's notices.
-	 */
-	private ExtendedHyperlinkListener linkListener;
-
-
-	/**
-	 * Constructor.
-	 */
-	protected AbstractParser() {
-		setEnabled(true);
-	}
+    /**
+     * Listens for events from {@link FocusableTip}s generated from this
+     * parser's notices.
+     */
+    private ExtendedHyperlinkListener linkListener;
 
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public ExtendedHyperlinkListener getHyperlinkListener() {
-		return linkListener;
-	}
+    /**
+     * Constructor.
+     */
+    protected AbstractParser() {
+        setEnabled(true);
+    }
 
 
-	/**
-	 * Returns <code>null</code>.  Parsers that wish to show images in their
-	 * tool tips should override this method to return the image base URL.
-	 *
-	 * @return <code>null</code> always.
-	 */
-	public URL getImageBase() {
-		return null;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public ExtendedHyperlinkListener getHyperlinkListener() {
+        return linkListener;
+    }
 
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean isEnabled() {
-		return enabled;
-	}
+    /**
+     * Returns <code>null</code>.  Parsers that wish to show images in their
+     * tool tips should override this method to return the image base URL.
+     *
+     * @return <code>null</code> always.
+     */
+    public URL getImageBase() {
+        return null;
+    }
 
 
-	/**
-	 * Toggles whether this parser is enabled.
-	 *
-	 * @param enabled Whether this parser is enabled.
-	 * @see #isEnabled()
-	 */
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    public boolean isEnabled() {
+        return enabled;
+    }
 
 
-	/**
-	 * Returns the listener for this parser.
-	 *
-	 * @param listener The new listener.
-	 * @see #getHyperlinkListener()
-	 */
-	public void setHyperlinkListener(ExtendedHyperlinkListener listener) {
-		linkListener = listener;
-	}
+    /**
+     * Toggles whether this parser is enabled.
+     *
+     * @param enabled Whether this parser is enabled.
+     * @see #isEnabled()
+     */
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+
+    /**
+     * Returns the listener for this parser.
+     *
+     * @param listener The new listener.
+     * @see #getHyperlinkListener()
+     */
+    public void setHyperlinkListener(ExtendedHyperlinkListener listener) {
+        linkListener = listener;
+    }
 
 
 }

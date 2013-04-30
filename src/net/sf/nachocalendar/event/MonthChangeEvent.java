@@ -41,21 +41,21 @@ import java.util.EventObject;
 
 /**
  * Event fired when a month must be changed because a day under or overflows.
+ *
  * @author Ignacio Merani
  */
 public class MonthChangeEvent extends EventObject {
-    
+
     /**
      * Holds value of property date.
      */
     private Date date;
-    
-    /** 
+
+    /**
      * Creates a new instance of MonthChangeEvent.
-     * 
-     * @param source the source.
+     *
+     * @param source  the source.
      * @param newdate the new month.
-     *  
      */
     public MonthChangeEvent(Object source, Date newdate) {
         super(source);
@@ -63,9 +63,10 @@ public class MonthChangeEvent extends EventObject {
             date = (Date) newdate.clone();
         } else date = null;
     }
-    
+
     /**
      * Getter for property date.
+     *
      * @return Value of property date.
      */
     public Date getDate() {
@@ -73,10 +74,11 @@ public class MonthChangeEvent extends EventObject {
             return (Date) date.clone();
         }
         return null;
-    }    
-    
+    }
+
     /**
      * Setter for property date.
+     *
      * @param date New value of property date.
      */
     public void setDate(Date date) {
@@ -84,5 +86,5 @@ public class MonthChangeEvent extends EventObject {
             this.date = (Date) date.clone();
         } else this.date = null;
     }
-    
+
 }

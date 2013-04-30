@@ -39,16 +39,14 @@ import java.util.Set;
  * Interface that must implement any class
  * used to read a configuration file to
  * get property values.
- * 
+ *
  * @author Ignacio Merani
- *
- *
  */
 public interface Customizer {
 
     /**
-     * Returns an int related to the key. 
-     * 
+     * Returns an int related to the key.
+     *
      * @param key
      * @return
      */
@@ -56,15 +54,15 @@ public interface Customizer {
 
     /**
      * Returns a boolean related to the key.
-     *  
+     *
      * @param key
      * @return
      */
     public boolean getBoolean(String key);
 
     /**
-     * Returns a String related to the key. 
-     * 
+     * Returns a String related to the key.
+     *
      * @param key
      * @return
      */
@@ -72,7 +70,7 @@ public interface Customizer {
 
     /**
      * Returns a long related to the key.
-     *  
+     *
      * @param key
      * @return
      */
@@ -80,15 +78,15 @@ public interface Customizer {
 
     /**
      * Returns a float related to the key.
-     *  
+     *
      * @param key
      * @return
      */
     public float getFloat(String key);
 
     /**
-     * Returns a double related to the key. 
-     * 
+     * Returns a double related to the key.
+     *
      * @param key
      * @return
      */
@@ -96,6 +94,7 @@ public interface Customizer {
 
     /**
      * Returns a Set with the properties names.
+     *
      * @return
      */
     public Set keySet();

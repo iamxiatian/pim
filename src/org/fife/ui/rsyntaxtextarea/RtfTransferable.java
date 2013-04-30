@@ -40,66 +40,63 @@ import java.io.StringReader;
  */
 class RtfTransferable implements Transferable {
 
-	/**
-	 * The RTF data, in bytes (the RTF is 7-bit ascii).
-	 */
-	private byte[] data;
+    /**
+     * The RTF data, in bytes (the RTF is 7-bit ascii).
+     */
+    private byte[] data;
 
 
-	/**
-	 * The "flavors" the text can be returned as.
-	 */
-	private final DataFlavor[] FLAVORS = {
-		new DataFlavor("text/rtf", "RTF"),
-		DataFlavor.stringFlavor,
-		DataFlavor.plainTextFlavor // deprecated
-	};
+    /**
+     * The "flavors" the text can be returned as.
+     */
+    private final DataFlavor[] FLAVORS = {
+            new DataFlavor("text/rtf", "RTF"),
+            DataFlavor.stringFlavor,
+            DataFlavor.plainTextFlavor // deprecated
+    };
 
 
-	/**
-	 * Constructor.
-	 *
-	 * @param data The RTF data.
-	 */
-	public RtfTransferable(byte[] data) {
-		this.data = data;
-	}
+    /**
+     * Constructor.
+     *
+     * @param data The RTF data.
+     */
+    public RtfTransferable(byte[] data) {
+        this.data = data;
+    }
 
 
-	public Object getTransferData(DataFlavor flavor)
-					throws UnsupportedFlavorException, IOException {
-		if (flavor.equals(FLAVORS[0])) { // RTF
-			return new ByteArrayInputStream(data==null ? new byte[0] : data);
-		}
-		else if (flavor.equals(FLAVORS[1])) { // stringFlavor
-			return data==null ? "" : RtfToText.getPlainText(data);
-		}
-		else if (flavor.equals(FLAVORS[2])) { // plainTextFlavor (deprecated)
-			String text = ""; // Valid if data==null
-			if (data!=null) {
-				text = RtfToText.getPlainText(data);
-			}
-			return new StringReader(text);
-		}
-		else {
-			throw new UnsupportedFlavorException(flavor);
-		}
-	}
+    public Object getTransferData(DataFlavor flavor)
+            throws UnsupportedFlavorException, IOException {
+        if (flavor.equals(FLAVORS[0])) { // RTF
+            return new ByteArrayInputStream(data == null ? new byte[0] : data);
+        } else if (flavor.equals(FLAVORS[1])) { // stringFlavor
+            return data == null ? "" : RtfToText.getPlainText(data);
+        } else if (flavor.equals(FLAVORS[2])) { // plainTextFlavor (deprecated)
+            String text = ""; // Valid if data==null
+            if (data != null) {
+                text = RtfToText.getPlainText(data);
+            }
+            return new StringReader(text);
+        } else {
+            throw new UnsupportedFlavorException(flavor);
+        }
+    }
 
 
-	public DataFlavor[] getTransferDataFlavors() {
-		return (DataFlavor[])FLAVORS.clone();
-	}
+    public DataFlavor[] getTransferDataFlavors() {
+        return (DataFlavor[]) FLAVORS.clone();
+    }
 
 
-	public boolean isDataFlavorSupported(DataFlavor flavor) {
-		for (int i=0; i<FLAVORS.length; i++) {
-			if (flavor.equals(FLAVORS[i])) {
-				return true;
-			}
-		}
-		return false;
-	}
+    public boolean isDataFlavorSupported(DataFlavor flavor) {
+        for (int i = 0; i < FLAVORS.length; i++) {
+            if (flavor.equals(FLAVORS[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

@@ -25,16 +25,16 @@ public class FormatSymbols extends DateFormatSymbols {
     //private DateFormatSymbols symbols;
 
     //private static DateFormatter requiredFormatter = new DateFormatter(); // setup
-                                                                          // a
-                                                                          // default
-                                                                          // formatter
+    // a
+    // default
+    // formatter
 
     private static Locale requiredLocale = Locale.getDefault(); // setup a
-                                                                // default
-                                                                // locale
+    // default
+    // locale
 
     public FormatSymbols(DateFormatter passedrequiredFormatter,
-            Locale passedrequiredLocale) {
+                         Locale passedrequiredLocale) {
         //requiredFormatter = passedrequiredFormatter;
         requiredLocale = passedrequiredLocale;
         ref = null;

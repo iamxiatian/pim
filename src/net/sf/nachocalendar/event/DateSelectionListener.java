@@ -37,13 +37,12 @@ import java.util.EventListener;
 
 /**
  * @author Ignacio Merani
- *
- * 
  */
 public interface DateSelectionListener extends EventListener {
 
     /**
      * Event fired when the selection changes.
+     *
      * @param e the event
      */
     void valueChanged(DateSelectionEvent e);

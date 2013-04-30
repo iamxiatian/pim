@@ -47,21 +47,20 @@ import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * This class reads an xml file to get properties values.
- * @author Ignacio Merani
  *
- * 
+ * @author Ignacio Merani
  */
 public class XMLCustomizer extends DefaultHandler implements Customizer {
     private Properties properties;
     private String name;
     private StringBuffer value;
-    
+
     public XMLCustomizer(InputStream config) throws SAXException, IOException, ParserConfigurationException {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         parser.parse(config, this);
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getInteger(java.lang.String)
      */
@@ -75,35 +74,35 @@ public class XMLCustomizer extends DefaultHandler implements Customizer {
     public boolean getBoolean(String key) {
         return PropertiesConverter.getBoolean(properties.getProperty(key));
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getString(java.lang.String)
      */
     public String getString(String key) {
         return properties.getProperty(key);
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getLong(java.lang.String)
      */
     public long getLong(String key) {
         return PropertiesConverter.getLong(properties.getProperty(key));
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getFloat(java.lang.String)
      */
     public float getFloat(String key) {
         return PropertiesConverter.getFloat(properties.getProperty(key));
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getDouble(java.lang.String)
      */
     public double getDouble(String key) {
         return PropertiesConverter.getDouble(properties.getProperty(key));
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#keySet()
      */
@@ -117,7 +116,7 @@ public class XMLCustomizer extends DefaultHandler implements Customizer {
 
     public void characters(char[] ch, int start, int length) throws SAXException {
         value.append(ch, start, length);
-        
+
     }
 
     public void endElement(String namespaceURI, String localName, String qName) throws SAXException {

@@ -38,85 +38,85 @@ import java.awt.Rectangle;
  * @see org.fife.ui.rtextarea.ImageBackgroundPainterStrategy
  */
 public class ColorBackgroundPainterStrategy
-				implements BackgroundPainterStrategy {
+        implements BackgroundPainterStrategy {
 
-	private Color color;
-
-
-	/**
-	 * Constructor.
-	 *
-	 * @param color The color to use when painting the background.
-	 */
-	public ColorBackgroundPainterStrategy(Color color) {
-		setColor(color);
-	}
+    private Color color;
 
 
-	/**
-	 * Returns whether or not the specified object is equivalent to
-	 * this one.
-	 *
-	 * @param o2 The object to which to compare.
-	 * @return Whether <code>o2</code> is another
-	 *         <code>ColorBackgroundPainterStrategy</code> representing
-	 *         the same color as this one.
-	 */
-	public boolean equals(Object o2) {
-		return o2!=null &&
-			(o2 instanceof ColorBackgroundPainterStrategy) &&
-			this.color.equals(
-				((ColorBackgroundPainterStrategy)o2).getColor());
-	}
+    /**
+     * Constructor.
+     *
+     * @param color The color to use when painting the background.
+     */
+    public ColorBackgroundPainterStrategy(Color color) {
+        setColor(color);
+    }
 
 
-	/**
-	 * Returns the color used to paint the background.
-	 *
-	 * @return The color.
-	 * @see #setColor
-	 */
-	public Color getColor() {
-		return color;
-	}
+    /**
+     * Returns whether or not the specified object is equivalent to
+     * this one.
+     *
+     * @param o2 The object to which to compare.
+     * @return Whether <code>o2</code> is another
+     *         <code>ColorBackgroundPainterStrategy</code> representing
+     *         the same color as this one.
+     */
+    public boolean equals(Object o2) {
+        return o2 != null &&
+                (o2 instanceof ColorBackgroundPainterStrategy) &&
+                this.color.equals(
+                        ((ColorBackgroundPainterStrategy) o2).getColor());
+    }
 
 
-	/**
-	 * Returns the hash code to use when placing an object of this type into
-	 * hash maps.  This method is implemented since we overrode
-	 * {@link #equals(Object)}, to keep FindBugs happy.
-	 *
-	 * @return The hash code.
-	 */
-	public int hashCode() {
-		return color.hashCode();
-	}
+    /**
+     * Returns the color used to paint the background.
+     *
+     * @return The color.
+     * @see #setColor
+     */
+    public Color getColor() {
+        return color;
+    }
 
 
-	/**
-	 * Paints the background.
-	 *
-	 * @param g The graphics context.
-	 * @param bounds The bounds of the object whose backgrouns we're
-	 *        painting.
-	 */
-	public void paint(Graphics g, Rectangle bounds) {
-		Color temp = g.getColor();
-		g.setColor(color);
-		g.fillRect(bounds.x,bounds.y, bounds.width,bounds.height);
-		g.setColor(temp);
-	}
+    /**
+     * Returns the hash code to use when placing an object of this type into
+     * hash maps.  This method is implemented since we overrode
+     * {@link #equals(Object)}, to keep FindBugs happy.
+     *
+     * @return The hash code.
+     */
+    public int hashCode() {
+        return color.hashCode();
+    }
 
 
-	/**
-	 * Sets the color used to paint the background.
-	 *
-	 * @param color The color to use.
-	 * @see #getColor
-	 */
-	public void setColor(Color color) {
-		this.color = color;
-	}
+    /**
+     * Paints the background.
+     *
+     * @param g      The graphics context.
+     * @param bounds The bounds of the object whose backgrouns we're
+     *               painting.
+     */
+    public void paint(Graphics g, Rectangle bounds) {
+        Color temp = g.getColor();
+        g.setColor(color);
+        g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+        g.setColor(temp);
+    }
+
+
+    /**
+     * Sets the color used to paint the background.
+     *
+     * @param color The color to use.
+     * @see #getColor
+     */
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
 
 }

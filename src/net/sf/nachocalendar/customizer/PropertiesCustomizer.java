@@ -40,18 +40,16 @@ import java.util.Set;
 
 /**
  * Calendar customizer using a .properties file.
- * 
- * @author Ignacio Merani
  *
- * 
+ * @author Ignacio Merani
  */
 public class PropertiesCustomizer implements Customizer {
     private Properties properties;
-    
+
     /**
      * Constructor using a inputstream which may read
      * a .properties file.
-     * 
+     *
      * @param config
      * @throws IOException
      */
@@ -59,7 +57,7 @@ public class PropertiesCustomizer implements Customizer {
         properties = new Properties();
         properties.load(config);
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getInteger(java.lang.String)
      */
@@ -73,40 +71,40 @@ public class PropertiesCustomizer implements Customizer {
     public boolean getBoolean(String key) {
         return PropertiesConverter.getBoolean(properties.getProperty(key));
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getString(java.lang.String)
      */
     public String getString(String key) {
         return properties.getProperty(key);
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getLong(java.lang.String)
      */
     public long getLong(String key) {
         return PropertiesConverter.getLong(properties.getProperty(key));
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getFloat(java.lang.String)
      */
     public float getFloat(String key) {
         return PropertiesConverter.getFloat(properties.getProperty(key));
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#getDouble(java.lang.String)
      */
     public double getDouble(String key) {
         return PropertiesConverter.getDouble(properties.getProperty(key));
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.Customizer#keySet()
      */
     public Set keySet() {
         return properties.keySet();
     }
-    
+
 }

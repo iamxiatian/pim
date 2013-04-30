@@ -32,7 +32,7 @@ import java.util.EventListener;
  * being edited, it may broadcast {@link ActiveLineRangeEvent}s whenever the
  * caret moves into a new "block" of code.  Listeners can listen for these
  * events and respond accordingly.<p>
- * 
+ * <p/>
  * See the <code>RSTALanguageSupport</code> project at
  * <a href="http://fifesoft.com">http://fifesoft.com</a> for some
  * <code>LanguageSupport</code> implementations that may broadcast these
@@ -45,14 +45,14 @@ import java.util.EventListener;
 public interface ActiveLineRangeListener extends EventListener {
 
 
-	/**
-	 * Called whenever the "active line range" changes.
-	 *
-	 * @param e Information about the line range change.  If there is no longer
-	 *        an "active line range," the "minimum" and "maximum" line values
-	 *        should both be <code>-1</code>.
-	 */
-	public void activeLineRangeChanged(ActiveLineRangeEvent e);
+    /**
+     * Called whenever the "active line range" changes.
+     *
+     * @param e Information about the line range change.  If there is no longer
+     *          an "active line range," the "minimum" and "maximum" line values
+     *          should both be <code>-1</code>.
+     */
+    public void activeLineRangeChanged(ActiveLineRangeEvent e);
 
 
 }

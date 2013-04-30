@@ -45,11 +45,12 @@ import java.util.Date;
  * @author Ignacio Merani
  */
 public interface DataModel {
-    
+
     /**
      * Checks if the date provided has data.
+     *
      * @param date Date to be checked
      * @return the data or null if it has not
-     */    
+     */
     Object getData(Date date);
 }

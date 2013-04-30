@@ -39,18 +39,21 @@ import java.util.EventListener;
 
 /**
  * Defines an Object which listens for year changes.
+ *
  * @author Ignacio Merani
  */
 public interface YearChangeListener extends EventListener {
     /**
      * Called when the month overflows.
+     *
      * @param e Event fired
-     */    
+     */
     void yearIncreased(YearChangeEvent e);
-    
+
     /**
      * Called when the month underflows.
+     *
      * @param e Event fired
-     */    
+     */
     void yearDecreased(YearChangeEvent e);
 }

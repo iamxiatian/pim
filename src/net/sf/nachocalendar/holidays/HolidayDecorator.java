@@ -44,21 +44,21 @@ import net.sf.nachocalendar.components.DayRenderer;
 
 /**
  * @author Ignacio Merani
- *
  */
 public class HolidayDecorator implements DayRenderer {
     private DayRenderer renderer;
-    
-    
+
+
     /**
      * Default constructor.
+     *
      * @param renderer renderer to decore.
      */
     public HolidayDecorator(DayRenderer renderer) {
         super();
         this.renderer = renderer;
     }
-    
+
     /**
      * @see net.sf.nachocalendar.components.DayRenderer#getDayRenderer(net.sf.nachocalendar.components.DayPanel, java.util.Date, java.lang.Object, boolean, boolean, boolean)
      */

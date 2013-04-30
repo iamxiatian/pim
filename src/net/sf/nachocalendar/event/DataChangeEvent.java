@@ -40,19 +40,21 @@ import java.util.EventObject;
 
 /**
  * Event fired when a date changes.
+ *
  * @author Ignacio Merani
  */
 public class DataChangeEvent extends EventObject {
-    
+
     /**
      * Holds value of property date.
      */
     private Date date;
-    
+
     /**
      * Creates a new instance of DataChangeEvent.
+     *
      * @param source source object
-     * @param date date changed
+     * @param date   date changed
      */
     public DataChangeEvent(Object source, Date date) {
         super(source);
@@ -60,9 +62,10 @@ public class DataChangeEvent extends EventObject {
             this.date = (Date) date.clone();
         } else this.date = null;
     }
-    
+
     /**
      * Getter for property date.
+     *
      * @return Value of property date.
      */
     public Date getDate() {
@@ -71,5 +74,5 @@ public class DataChangeEvent extends EventObject {
         }
         return null;
     }
-    
+
 }

@@ -43,45 +43,45 @@ import org.fife.ui.rsyntaxtextarea.focusabletip.FocusableTip;
 public interface Parser {
 
 
-	/**
-	 * Returns the listener for hyperlink events from {@link FocusableTip}s,
-	 * or <code>null</code> if none.
-	 *
-	 * @return The listener.
-	 */
-	public ExtendedHyperlinkListener getHyperlinkListener();
+    /**
+     * Returns the listener for hyperlink events from {@link FocusableTip}s,
+     * or <code>null</code> if none.
+     *
+     * @return The listener.
+     */
+    public ExtendedHyperlinkListener getHyperlinkListener();
 
 
-	/**
-	 * Returns the base URL for any images displayed in returned
-	 * {@link ParserNotice} HTML text.  Note that if a parser notice's text
-	 * is not HTML, this URL is not used.
-	 *
-	 * @return The URL.  This may be <code>null</code>.
-	 */
-	public URL getImageBase();
+    /**
+     * Returns the base URL for any images displayed in returned
+     * {@link ParserNotice} HTML text.  Note that if a parser notice's text
+     * is not HTML, this URL is not used.
+     *
+     * @return The URL.  This may be <code>null</code>.
+     */
+    public URL getImageBase();
 
 
-	/**
-	 * Returns whether this parser is enabled.  If this returns
-	 * <code>false</code>, it will not be run.
-	 *
-	 * @return Whether this parser is enabled.
-	 */
-	public boolean isEnabled();
+    /**
+     * Returns whether this parser is enabled.  If this returns
+     * <code>false</code>, it will not be run.
+     *
+     * @return Whether this parser is enabled.
+     */
+    public boolean isEnabled();
 
 
-	/**
-	 * Parses input from the specified document.
-	 *
-	 * @param doc The document to parse.  This document is in a read lock,
-	 *        so it cannot be modified while parsing is occurring.
-	 * @param style The language being rendered, such as
-	 *        {@link SyntaxConstants#SYNTAX_STYLE_JAVA}.
-	 * @return An object describing the section of the document parsed and the
-	 *         results.  This is guaranteed to be non-<code>null</code>.
-	 */
-	public ParseResult parse(RSyntaxDocument doc, String style);
+    /**
+     * Parses input from the specified document.
+     *
+     * @param doc   The document to parse.  This document is in a read lock,
+     *              so it cannot be modified while parsing is occurring.
+     * @param style The language being rendered, such as
+     *              {@link SyntaxConstants#SYNTAX_STYLE_JAVA}.
+     * @return An object describing the section of the document parsed and the
+     *         results.  This is guaranteed to be non-<code>null</code>.
+     */
+    public ParseResult parse(RSyntaxDocument doc, String style);
 
 
 }

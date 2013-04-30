@@ -37,13 +37,12 @@ import java.util.EventObject;
 
 /**
  * @author Ignacio Merani
- *
- * 
  */
 public class DateSelectionEvent extends EventObject {
 
     /**
      * Default constructor.
+     *
      * @param source event source
      */
     public DateSelectionEvent(Object source) {

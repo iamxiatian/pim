@@ -42,8 +42,6 @@ import net.sf.nachocalendar.event.DateSelectionListener;
 
 /**
  * @author Ignacio Merani
- *
- * 
  */
 public interface DateSelectionModel {
 
@@ -51,121 +49,138 @@ public interface DateSelectionModel {
      * Used to support only one Date selected.
      */
     int SINGLE_SELECTION = 0;
-    
+
     /**
      * Used to support only one Date interval.
      */
     int SINGLE_INTERVAL_SELECTION = 1;
-    
-    
+
+
     /**
      * Used to support multiple Date intevals.
      */
     int MULTIPLE_INTERVAL_SELECTION = 2;
-    
-    /** Adds the interval to the selection.
+
+    /**
+     * Adds the interval to the selection.
+     *
      * @param from starting date
-     * @param to end date
+     * @param to   end date
      */
     void addSelectionInterval(Date from, Date to);
 
     /**
-     *  Clears the current selection.
+     * Clears the current selection.
      */
     void clearSelection();
 
-    /** 
+    /**
      * Checks if provided date is selected.
-     * @return true if date is selected
+     *
      * @param date Date to check.
+     * @return true if date is selected
      */
     boolean isSelectedDate(Date date);
 
-    /** Checks if selection is empty.
+    /**
+     * Checks if selection is empty.
+     *
      * @return true if selection is empty.
      */
     boolean isSelectionEmpty();
-    
+
     /**
      * Returns the selection mode.
+     *
      * @return selection mode.
      */
     int getSelectionMode();
-    
+
     /**
      * Sets the selection mode.
+     *
      * @param selectionMode the new selection mode.
      */
     void setSelectionMode(int selectionMode);
 
-    /** Removes the interval from selection.
+    /**
+     * Removes the interval from selection.
+     *
      * @param from starting date
-     * @param to end date
+     * @param to   end date
      */
     void removeSelectionInterval(Date from, Date to);
 
     /**
      * Registers DateSelectionListener to receive events.
+     *
      * @param listener The listener to register.
      */
     void addDateSelectionListener(DateSelectionListener listener);
 
     /**
      * Removes DateSelectionListener from the list of listeners.
+     *
      * @param listener The listener to remove.
      */
     void removeDateSelectionListener(DateSelectionListener listener);
-    
+
     /**
      * Returns the lead selection Date.
+     *
      * @return lead selection Date.
      */
     Date getLeadSelectionDate();
-    
+
     /**
      * Sets the lead selection Date.
+     *
      * @param date lead selection Date.
      */
     void setLeadSelectionDate(Date date);
-    
+
     /**
      * Returns the selected Date.
+     *
      * @return selected Date.
      */
     Object getSelectedDate();
-    
+
     /**
      * Sets the selected Dates.
+     *
      * @return selected Dates.
      */
     Object[] getSelectedDates();
-    
+
     /**
      * Sets the selected Date.
+     *
      * @param date selected Date.
      */
     void setSelectedDate(Object date);
-   
+
     /**
      * Sets the selected Dates.
+     *
      * @param dates selected Dates.
      */
     void setSelectedDates(Object[] dates);
-    
+
     /**
      * This attribute indicates that any
-     * upcoming changes to the value of the 
+     * upcoming changes to the value of the
      * model should be considered a single event.
-     * 
+     *
      * @param b
      */
     void setValueIsAdjusting(boolean b);
-    
+
     /**
-     * Returns true if the current changes 
-     * to the value property are part of a 
+     * Returns true if the current changes
+     * to the value property are part of a
      * series of changes.
-     * 
+     *
      * @return
      */
     boolean getValueIsAdjusting();

@@ -40,25 +40,31 @@ import java.util.Date;
 
 /**
  * Default implementation of the Task interface.
+ *
  * @author Ignacio Merani
  */
 public class DefaultTask implements Task, Serializable {
     private Date date;
     private String name;
-    
-    /** Creates a new instance of DefaultTask. */
+
+    /**
+     * Creates a new instance of DefaultTask.
+     */
     public DefaultTask() {
     }
-    
+
     /**
      * Returns the Date of this task.
+     *
      * @return Returns the date.
      */
     public Date getDate() {
         return (Date) date.clone();
     }
+
     /**
      * Sets the date of this task.
+     *
      * @param date The date to set.
      */
     public void setDate(Date date) {
@@ -66,25 +72,30 @@ public class DefaultTask implements Task, Serializable {
             this.date = (Date) date.clone();
         } else this.date = null;
     }
+
     /**
      * Returns the name of this task.
+     *
      * @return Returns the name.
      */
     public String getName() {
         return name;
     }
+
     /**
      * Sets the name of this task.
+     *
      * @param name The name to set.
      */
     public void setName(String name) {
         this.name = name;
     }
-    
+
     /**
      * Returns a String representing this object.
+     *
      * @return String representing this object.
-     */    
+     */
     public String toString() {
         return name;
     }

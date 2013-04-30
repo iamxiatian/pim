@@ -14,7 +14,7 @@ public class DocumentSizeFilter extends DocumentFilter {
 
     public void insertString(FilterBypass fb, int offs,
                              String str, AttributeSet a)
-        throws BadLocationException {
+            throws BadLocationException {
         if (DEBUG) {
             System.out.println("in DocumentSizeFilter's insertString method");
         }
@@ -28,11 +28,11 @@ public class DocumentSizeFilter extends DocumentFilter {
         else
             Toolkit.getDefaultToolkit().beep();
     }
-    
+
     public void replace(FilterBypass fb, int offs,
-                        int length, 
+                        int length,
                         String str, AttributeSet a)
-        throws BadLocationException {
+            throws BadLocationException {
         if (DEBUG) {
             System.out.println("in DocumentSizeFilter's replace method");
         }
@@ -41,7 +41,7 @@ public class DocumentSizeFilter extends DocumentFilter {
         //to truncate the replacement string so the contents
         //would be exactly maxCharacters in length.
         if ((fb.getDocument().getLength() + str.length()
-             - length) <= maxCharacters)
+                - length) <= maxCharacters)
             super.replace(fb, offs, length, str, a);
         else
             Toolkit.getDefaultToolkit().beep();

@@ -39,16 +39,18 @@ import java.util.EventObject;
 
 /**
  * Event fired when a year must be changed because a month under or overflows.
+ *
  * @author Ignacio Merani
  */
 public class YearChangeEvent extends EventObject {
-    
+
     /**
      * Creates a new instance of YearChangeEvent.
+     *
      * @param source source of the event
      */
     public YearChangeEvent(Object source) {
         super(source);
     }
-    
+
 }

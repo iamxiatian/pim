@@ -33,111 +33,111 @@ import java.awt.Color;
  */
 public interface ParserNotice extends Comparable {
 
-	/**
-	 * Indicates an info notice.
-	 */
-	public static final int INFO		= 2;
+    /**
+     * Indicates an info notice.
+     */
+    public static final int INFO = 2;
 
-	/**
-	 * Indicates a warning notice.
-	 */
-	public static final int WARNING		= 1;
+    /**
+     * Indicates a warning notice.
+     */
+    public static final int WARNING = 1;
 
-	/**
-	 * Indicates an error notice.
-	 */
-	public static final int ERROR		= 0;
-
-
-	/**
-	 * Returns whether this parser notice contains the specified location
-	 * in the document.
-	 *
-	 * @param pos The position in the document.
-	 * @return Whether the position is contained.  This will always return
-	 *         <code>false</code> if {@link #getOffset()} returns
-	 *         <code>-1</code>.
-	 */
-	public boolean containsPosition(int pos);
+    /**
+     * Indicates an error notice.
+     */
+    public static final int ERROR = 0;
 
 
-	/**
-	 * Returns the color to use when painting this notice.
-	 *
-	 * @return The color.
-	 */
-	public Color getColor();
+    /**
+     * Returns whether this parser notice contains the specified location
+     * in the document.
+     *
+     * @param pos The position in the document.
+     * @return Whether the position is contained.  This will always return
+     *         <code>false</code> if {@link #getOffset()} returns
+     *         <code>-1</code>.
+     */
+    public boolean containsPosition(int pos);
 
 
-	/**
-	 * Returns the length of the code the message is concerned with.
-	 *
- 	 * @return The length of the code the message is concerned with, or
- 	 *         <code>-1</code> if unknown.
- 	 * @see #getOffset()
- 	 * @see #getLine()
-	 */
-	public int getLength();
+    /**
+     * Returns the color to use when painting this notice.
+     *
+     * @return The color.
+     */
+    public Color getColor();
 
 
-	/**
-	 * Returns the level of this notice.
-	 *
-	 * @return One of {@link #INFO}, {@link #WARNING} OR {@link #ERROR}.
-	 */
-	public int getLevel();
+    /**
+     * Returns the length of the code the message is concerned with.
+     *
+     * @return The length of the code the message is concerned with, or
+     *         <code>-1</code> if unknown.
+     * @see #getOffset()
+     * @see #getLine()
+     */
+    public int getLength();
 
 
-	/**
-	 * Returns the line number the notice is about.
-	 *
-	 * @return The line number.
-	 */
-	public int getLine();
+    /**
+     * Returns the level of this notice.
+     *
+     * @return One of {@link #INFO}, {@link #WARNING} OR {@link #ERROR}.
+     */
+    public int getLevel();
 
 
-	/**
-	 * Returns the message from the parser.
-	 *
-	 * @return The message from the parser.
-	 */
-	public String getMessage();
+    /**
+     * Returns the line number the notice is about.
+     *
+     * @return The line number.
+     */
+    public int getLine();
 
 
-	/**
-	 * Returns the offset of the code the message is concerned with.
-	 *
-	 * @return The offset, or <code>-1</code> if unknown.
-	 * @see #getLength()
-	 * @see #getLine()
-	 */
-	public int getOffset();
+    /**
+     * Returns the message from the parser.
+     *
+     * @return The message from the parser.
+     */
+    public String getMessage();
 
 
-	/**
-	 * Returns the parser that created this message.
-	 *
-	 * @return The parser.
-	 */
-	public Parser getParser();
+    /**
+     * Returns the offset of the code the message is concerned with.
+     *
+     * @return The offset, or <code>-1</code> if unknown.
+     * @see #getLength()
+     * @see #getLine()
+     */
+    public int getOffset();
 
 
-	/**
-	 * Whether a squiggle underline should be drawn in the editor for this
-	 * notice.
-	 *
-	 * @return Whether a squiggle underline should be drawn.
-	 */
-	public boolean getShowInEditor();
+    /**
+     * Returns the parser that created this message.
+     *
+     * @return The parser.
+     */
+    public Parser getParser();
 
 
-	/**
-	 * Returns the tooltip text to display for this notice.
-	 *
-	 * @return The tool tip text.  If none has been explicitly set, this
-	 *         method returns the same text as {@link #getMessage()}.
-	 */
-	public String getToolTipText();
+    /**
+     * Whether a squiggle underline should be drawn in the editor for this
+     * notice.
+     *
+     * @return Whether a squiggle underline should be drawn.
+     */
+    public boolean getShowInEditor();
+
+
+    /**
+     * Returns the tooltip text to display for this notice.
+     *
+     * @return The tool tip text.  If none has been explicitly set, this
+     *         method returns the same text as {@link #getMessage()}.
+     */
+    public String getToolTipText();
 
 
 }

@@ -44,26 +44,26 @@ import net.sf.nachocalendar.components.DayRenderer;
 
 /**
  * @author Ignacio Merani
- *
  */
 public class TaskDecorator implements DayRenderer {
     private DayRenderer renderer;
-    
-    
+
+
     /**
      * Default constructor.
+     *
      * @param renderer renderer to decore.
      */
     public TaskDecorator(DayRenderer renderer) {
         super();
         this.renderer = renderer;
     }
-    
+
     /**
      * @see net.sf.nachocalendar.components.DayRenderer#getDayRenderer(net.sf.nachocalendar.components.DayPanel, java.util.Date, java.lang.Object, boolean, boolean, boolean)
      */
     public Component getDayRenderer(DayPanel daypanel, Date day, Object data,
-            boolean selected, boolean working, boolean enabled) {
+                                    boolean selected, boolean working, boolean enabled) {
         Component retorno = renderer.getDayRenderer(daypanel, day, data, selected, working, enabled);
         if (!enabled) return retorno;
         if ((data != null) && (data instanceof Collection)) {
@@ -77,7 +77,7 @@ public class TaskDecorator implements DayRenderer {
         } else {
             daypanel.setToolTipText(null);
         }
-        
+
         return retorno;
     }
 }

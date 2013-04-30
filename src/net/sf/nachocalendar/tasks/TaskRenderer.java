@@ -52,13 +52,17 @@ import net.sf.nachocalendar.components.DayRenderer;
  * Renderer customized to show dates with tasks assigned in
  * yellow background. It also creates a tooltip with the quantity
  * of tasks related to the Date.
+ *
  * @author Ignacio Merani
  * @deprecated As of version 0.20 replaced by net.sf.nachocalendar.tasks.TaskDecorator
  */
 public class TaskRenderer extends JLabel implements DayRenderer {
     private Calendar cal;
     private Color selectedbg, unselectedbg, unselectedfg, selectedfg, notworking, taskBg;
-    /** Creates a new instance of TaskRenderer. */
+
+    /**
+     * Creates a new instance of TaskRenderer.
+     */
     public TaskRenderer() {
         cal = Calendar.getInstance();
         // Fake solution: by now steal colors from a JList
@@ -73,16 +77,17 @@ public class TaskRenderer extends JLabel implements DayRenderer {
         notworking = new Color(240, 240, 255);
         taskBg = Color.yellow;
     }
-    
+
     /**
      * Returns a component configured to render the Day.
-     * @return component to be used
+     *
      * @param daypanel Daypanel to be renderer
-     * @param day current day
-     * @param data current data
+     * @param day      current day
+     * @param data     current data
      * @param selected true if it's selected
-     * @param working true if it's a working day
-     * @param enabled true if it's enabled
+     * @param working  true if it's a working day
+     * @param enabled  true if it's enabled
+     * @return component to be used
      */
     public Component getDayRenderer(DayPanel daypanel, Date day, Object data, boolean selected, boolean working, boolean enabled) {
         if (selected) {
@@ -92,7 +97,7 @@ public class TaskRenderer extends JLabel implements DayRenderer {
                 setBackground(unselectedbg);
             } else setBackground(notworking);
         }
-        
+
         if (working) {
             if (selected) {
                 setForeground(selectedfg);
@@ -113,7 +118,7 @@ public class TaskRenderer extends JLabel implements DayRenderer {
         cal.setTime(day);
         setText(Integer.toString(cal.get(Calendar.DAY_OF_MONTH)));
         daypanel.setToolTipText(null);
-        
+
         if ((data != null) && (data instanceof Collection)) {
             if (selected) {
                 setBackground(Color.magenta);
@@ -125,20 +130,22 @@ public class TaskRenderer extends JLabel implements DayRenderer {
         } else {
             daypanel.setToolTipText(null);
         }
-        
+
         return this;
     }
+
     /**
      * @return Returns the taskBg.
      */
     public Color getTaskBg() {
         return taskBg;
     }
+
     /**
      * @param taskBg The taskBg to set.
      */
     public void setTaskBg(Color taskBg) {
         this.taskBg = taskBg;
     }
-    
+
 }

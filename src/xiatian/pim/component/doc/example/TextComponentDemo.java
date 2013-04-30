@@ -29,10 +29,10 @@ public class TextComponentDemo extends JFrame {
         //Create the text pane and configure it.
         textPane = new JTextPane();
         textPane.setCaretPosition(0);
-        textPane.setMargin(new Insets(5,5,5,5));
+        textPane.setMargin(new Insets(5, 5, 5, 5));
         StyledDocument styledDoc = textPane.getStyledDocument();
         if (styledDoc instanceof AbstractDocument) {
-            doc = (AbstractDocument)styledDoc;
+            doc = (AbstractDocument) styledDoc;
             doc.setDocumentFilter(new DocumentSizeFilter(MAX_CHARACTERS));
         } else {
             System.err.println("Text pane's document isn't an AbstractDocument!");
@@ -48,8 +48,8 @@ public class TextComponentDemo extends JFrame {
 
         //Create a split pane for the change log and the text area.
         JSplitPane splitPane = new JSplitPane(
-                                       JSplitPane.VERTICAL_SPLIT,
-                                       scrollPane, scrollPaneForLog);
+                JSplitPane.VERTICAL_SPLIT,
+                scrollPane, scrollPaneForLog);
         splitPane.setOneTouchExpandable(true);
 
         //Create the status area.
@@ -63,7 +63,7 @@ public class TextComponentDemo extends JFrame {
         getContentPane().add(statusPane, BorderLayout.PAGE_END);
 
         //Set up the menu bar.
-        actions=createActionTable(textPane);
+        actions = createActionTable(textPane);
         JMenu editMenu = createEditMenu();
         JMenu styleMenu = createStyleMenu();
         JMenuBar mb = new JMenuBar();
@@ -84,11 +84,10 @@ public class TextComponentDemo extends JFrame {
         doc.addDocumentListener(new MyDocumentListener());
     }
 
-    
 
     //This one listens for edits that can be undone.
     protected class MyUndoableEditListener
-                    implements UndoableEditListener {
+            implements UndoableEditListener {
         public void undoableEditHappened(UndoableEditEvent e) {
             //Remember the edit and update the menus.
             undo.addEdit(e.getEdit());
@@ -99,24 +98,27 @@ public class TextComponentDemo extends JFrame {
 
     //And this one listens for any changes to the document.
     protected class MyDocumentListener
-                    implements DocumentListener {
+            implements DocumentListener {
         public void insertUpdate(DocumentEvent e) {
             displayEditInfo(e);
         }
+
         public void removeUpdate(DocumentEvent e) {
             displayEditInfo(e);
         }
+
         public void changedUpdate(DocumentEvent e) {
             displayEditInfo(e);
         }
+
         private void displayEditInfo(DocumentEvent e) {
             Document document = e.getDocument();
             int changeLength = e.getLength();
             changeLog.append(e.getType().toString() + ": " +
-                changeLength + " character" +
-                ((changeLength == 1) ? ". " : "s. ") +
-                " Text length = " + document.getLength() +
-                "." + newline);
+                    changeLength + " character" +
+                    ((changeLength == 1) ? ". " : "s. ") +
+                    " Text length = " + document.getLength() +
+                    "." + newline);
         }
     }
 
@@ -191,37 +193,37 @@ public class TextComponentDemo extends JFrame {
         menu.addSeparator();
 
         menu.add(new StyledEditorKit.FontFamilyAction("Serif",
-                                                      "Serif"));
+                "Serif"));
         menu.add(new StyledEditorKit.FontFamilyAction("SansSerif",
-                                                      "SansSerif"));
+                "SansSerif"));
 
         menu.addSeparator();
 
         menu.add(new StyledEditorKit.ForegroundAction("Red",
-                                                      Color.red));
+                Color.red));
         menu.add(new StyledEditorKit.ForegroundAction("Green",
-                                                      Color.green));
+                Color.green));
         menu.add(new StyledEditorKit.ForegroundAction("Blue",
-                                                      Color.blue));
+                Color.blue));
         menu.add(new StyledEditorKit.ForegroundAction("Black",
-                                                      Color.black));
+                Color.black));
 
         return menu;
     }
 
     protected void initDocument() {
         String initString[] =
-                { "Use the mouse to place the caret.",
-                  "Use the edit menu to cut, copy, paste, and select text.",
-                  "Also to undo and redo changes.",
-                  "Use the style menu to change the style of the text.",
-                  "Use the arrow keys on the keyboard or these emacs key bindings to move the caret:",
-                  "Ctrl-f, Ctrl-b, Ctrl-n, Ctrl-p." };
+                {"Use the mouse to place the caret.",
+                        "Use the edit menu to cut, copy, paste, and select text.",
+                        "Also to undo and redo changes.",
+                        "Use the style menu to change the style of the text.",
+                        "Use the arrow keys on the keyboard or these emacs key bindings to move the caret:",
+                        "Ctrl-f, Ctrl-b, Ctrl-n, Ctrl-p."};
 
         SimpleAttributeSet[] attrs = initAttributes(initString.length);
 
         try {
-            for (int i = 0; i < initString.length; i ++) {
+            for (int i = 0; i < initString.length; i++) {
                 doc.insertString(doc.getLength(), initString[i] + newline,
                         attrs[i]);
             }
@@ -265,7 +267,7 @@ public class TextComponentDemo extends JFrame {
             Action a = actionsArray[i];
             actions.put(a.getValue(Action.NAME), a);
         }
-  return actions;
+        return actions;
     }
 
     private Action getActionByName(String name) {
@@ -350,8 +352,8 @@ public class TextComponentDemo extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 //Turn off metal's use of bold fonts
-          UIManager.put("swing.boldMetal", Boolean.FALSE);
-    createAndShowGUI();
+                UIManager.put("swing.boldMetal", Boolean.FALSE);
+                createAndShowGUI();
             }
         });
     }

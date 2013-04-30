@@ -36,6 +36,7 @@
  */
 
 package net.sf.nachocalendar.holidays;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.util.Calendar;
@@ -49,14 +50,17 @@ import net.sf.nachocalendar.components.DayRenderer;
 
 /**
  * Implementation of the DayRenderer interface.
+ *
  * @author Ignacio Merani
  * @deprecated As of version 0.20 replaced by net.sf.nachocalendar.holidays.HoliDayDecorator
  */
 public class HoliDayRenderer extends JLabel implements DayRenderer {
     private Calendar cal;
     private Color selectedbg, unselectedbg, unselectedfg, selectedfg, notworking;
-    
-    /** Creates a new instance of HoliDayRenderer. */
+
+    /**
+     * Creates a new instance of HoliDayRenderer.
+     */
     public HoliDayRenderer() {
         cal = Calendar.getInstance();
         // Fake solution: by now steal colors from a JList
@@ -70,16 +74,17 @@ public class HoliDayRenderer extends JLabel implements DayRenderer {
         setOpaque(true);
         notworking = new Color(240, 240, 255);
     }
-    
+
     /**
      * Returns a component configured to render the Day.
-     * @return component to be used
+     *
      * @param daypanel Daypanel to be renderer
-     * @param day current day
-     * @param data current data
+     * @param day      current day
+     * @param data     current data
      * @param selected true if it's selected
-     * @param working true if it's a working day
-     * @param enabled true if it's enabled
+     * @param working  true if it's a working day
+     * @param enabled  true if it's enabled
+     * @return component to be used
      */
     public Component getDayRenderer(DayPanel daypanel, Date day, Object data, boolean selected, boolean working, boolean enabled) {
         if (selected) {
@@ -89,7 +94,7 @@ public class HoliDayRenderer extends JLabel implements DayRenderer {
                 setBackground(unselectedbg);
             } else setBackground(notworking);
         }
-        
+
         if (working) {
             if (selected) {
                 setForeground(selectedfg);
@@ -110,7 +115,7 @@ public class HoliDayRenderer extends JLabel implements DayRenderer {
             setForeground(Color.lightGray);
             return this;
         }
-        
+
         if (!enabled) {
             setForeground(Color.LIGHT_GRAY);
             return this;

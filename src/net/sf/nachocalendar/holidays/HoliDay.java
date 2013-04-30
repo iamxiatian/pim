@@ -38,6 +38,7 @@ import java.util.Date;
 /**
  * Interface that must be implemented to represent a HoliDay.
  * and use the HoliDayModel
+ *
  * @author Ignacio Merani
  */
 public interface HoliDay {
@@ -47,42 +48,39 @@ public interface HoliDay {
      * @return Value of property name.
      */
     String getName();
-    
+
     /**
      * Setter for property name.
      *
-     * @param name
-     *            New value of property name.
+     * @param name New value of property name.
      */
     void setName(String name);
-    
+
     /**
      * Getter for property date.
      *
      * @return Value of property date.
      */
     Date getDate();
-    
+
     /**
      * Setter for property date.
      *
-     * @param date
-     *            New value of property date.
+     * @param date New value of property date.
      */
     void setDate(Date date);
-    
+
     /**
      * Getter for property recurrent.
      *
      * @return Value of property recurrent.
      */
     boolean isRecurrent();
-    
+
     /**
      * Setter for property recurrent.
      *
-     * @param recurrent
-     *            New value of property recurrent.
+     * @param recurrent New value of property recurrent.
      */
     void setRecurrent(boolean recurrent);
 }

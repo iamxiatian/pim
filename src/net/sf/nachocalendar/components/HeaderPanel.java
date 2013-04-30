@@ -46,6 +46,7 @@ import javax.swing.JComponent;
 
 /**
  * Panel used to render headers and week numbers.
+ *
  * @author Ignacio Merani
  */
 public class HeaderPanel extends JComponent {
@@ -54,104 +55,113 @@ public class HeaderPanel extends JComponent {
      * Holds value of property renderer.
      */
     private HeaderRenderer renderer;
-    
+
     /**
      * Holds value of property value.
      */
     private Object value;
-    
+
     /**
      * Holds value of property header.
      */
     private boolean header;
-    
+
     /**
      * Holds value of property working.
      */
     private boolean working;
-    
+
     /**
      * Creates a new instance of HeaderPanel.
+     *
      * @param renderer renderer to be used
      */
-    
+
     public HeaderPanel(HeaderRenderer renderer) {
         this.renderer = renderer;
         setLayout(new BorderLayout());
         value = "";
     }
-    
+
     /**
      * Getter for property renderer.
+     *
      * @return Value of property renderer.
      */
     public HeaderRenderer getRenderer() {
         return this.renderer;
     }
-    
+
     /**
      * Setter for property renderer.
+     *
      * @param renderer New value of property renderer.
      */
     public void setRenderer(HeaderRenderer renderer) {
         this.renderer = renderer;
     }
-    
+
     /**
      * Getter for property value.
+     *
      * @return Value of property value.
      */
     public Object getValue() {
         return this.value;
     }
-    
+
     /**
      * Setter for property value.
+     *
      * @param value New value of property value.
      */
     public void setValue(Object value) {
         this.value = value;
         repaint();
     }
-    
+
     /**
      * Getter for property header.
+     *
      * @return Value of property header.
      */
     public boolean isHeader() {
         return this.header;
     }
-    
+
     /**
      * Setter for property header.
+     *
      * @param header New value of property header.
      */
     public void setHeader(boolean header) {
         this.header = header;
     }
-    
+
     /**
      * Getter for property working.
+     *
      * @return Value of property working.
      */
     public boolean isWorking() {
         return this.working;
     }
-    
+
     /**
      * Setter for property working.
+     *
      * @param working New value of property working.
      */
     public void setWorking(boolean working) {
         this.working = working;
     }
-    
+
     /**
      * Invoked by Swing to draw components.
      * Applications should not invoke <code>paint</code> directly,
      * but should instead use the <code>repaint</code> method to
      * schedule the component for redrawing.
-     * <p>
+     * <p/>
      * This method actually delegates the work of painting to three
      * protected methods: <code>paintComponent</code>,
      * <code>paintBorder</code>,
@@ -164,7 +174,7 @@ public class HeaderPanel extends JComponent {
      * <code>paint</code> method should just override
      * <code>paintComponent</code>.
      *
-     * @param g  the <code>Graphics</code> context in which to paint
+     * @param g the <code>Graphics</code> context in which to paint
      */
     public void paint(Graphics g) {
         Component comp = renderer.getHeaderRenderer(this, value, header, working);
@@ -177,7 +187,7 @@ public class HeaderPanel extends JComponent {
         }
         comp.paint(g);
     }
-    
+
     /**
      * If the <code>preferredSize</code> has been set to a
      * non-<code>null</code> value just returns it.
@@ -190,12 +200,14 @@ public class HeaderPanel extends JComponent {
     public Dimension getPreferredSize() {
         return new Dimension(28, 16);
     }
+
     /**
      * @return Returns the antiAliased.
      */
     public boolean isAntiAliased() {
         return antiAliased;
     }
+
     /**
      * @param antiAliased The antiAliased to set.
      */

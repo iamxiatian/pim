@@ -53,14 +53,17 @@ import net.sf.nachocalendar.components.DayRenderer;
  * Renderer customized to show dates with tasks assigned in
  * yellow background. It also creates a tooltip with the quantity
  * of tasks related to the Date
+ *
  * @author Ignacio Merani
  */
 public class TaskQuantityRenderer extends JLabel implements DayRenderer {
     private Calendar cal;
     private Color selectedbg, unselectedbg, unselectedfg, selectedfg, notworking, taskBg, taskColor;
     private int taskq;
-    
-    /** Creates a new instance of TaskRenderer. */
+
+    /**
+     * Creates a new instance of TaskRenderer.
+     */
     public TaskQuantityRenderer() {
         cal = Calendar.getInstance();
         // Fake solution: by now steal colors from a JList
@@ -76,16 +79,17 @@ public class TaskQuantityRenderer extends JLabel implements DayRenderer {
         taskBg = Color.yellow;
         taskColor = Color.RED;
     }
-    
+
     /**
      * Returns a component configured to render the Day.
-     * @return component to be used
+     *
      * @param daypanel Daypanel to be renderer
-     * @param day current day
-     * @param data current data
+     * @param day      current day
+     * @param data     current data
      * @param selected true if it's selected
-     * @param working true if it's a working day
-     * @param enabled true if it's enabled
+     * @param working  true if it's a working day
+     * @param enabled  true if it's enabled
+     * @return component to be used
      */
     public Component getDayRenderer(DayPanel daypanel, Date day, Object data, boolean selected, boolean working, boolean enabled) {
         taskq = 0;
@@ -96,7 +100,7 @@ public class TaskQuantityRenderer extends JLabel implements DayRenderer {
                 setBackground(unselectedbg);
             } else setBackground(notworking);
         }
-        
+
         if (working) {
             if (selected) {
                 setForeground(selectedfg);
@@ -129,23 +133,27 @@ public class TaskQuantityRenderer extends JLabel implements DayRenderer {
         } else {
             daypanel.setToolTipText(null);
         }
-        
+
         return this;
     }
+
     /**
      * @return Returns the taskBg.
      */
     public Color getTaskBg() {
         return taskBg;
     }
+
     /**
      * @param taskBg The taskBg to set.
      */
     public void setTaskBg(Color taskBg) {
         this.taskBg = taskBg;
     }
-    
-    /** Draws the component.
+
+    /**
+     * Draws the component.
+     *
      * @param g Graphics Object
      */
     public void paint(Graphics g) {
@@ -166,5 +174,5 @@ public class TaskQuantityRenderer extends JLabel implements DayRenderer {
             }
         }
     }
-    
+
 }

@@ -36,17 +36,17 @@ package net.sf.nachocalendar.customizer;
 
 /**
  * Utility class to convert Strings to various types.
- * @author Ignacio Merani
  *
- * 
+ * @author Ignacio Merani
  */
 public final class PropertiesConverter {
-    
-    private PropertiesConverter() {}
-    
+
+    private PropertiesConverter() {
+    }
+
     /**
-     * Converts the String to an int. 
-     * 
+     * Converts the String to an int.
+     *
      * @param value
      * @return
      */
@@ -63,7 +63,7 @@ public final class PropertiesConverter {
 
     /**
      * Converts the String to a boolean.
-     *  
+     *
      * @param value
      * @return
      */
@@ -71,10 +71,10 @@ public final class PropertiesConverter {
         if (value == null) return false;
         return Boolean.valueOf(value).booleanValue();
     }
-    
+
     /**
      * Converts the String to a long.
-     *  
+     *
      * @param value
      * @return
      */
@@ -88,10 +88,10 @@ public final class PropertiesConverter {
         }
         return retorno;
     }
-    
+
     /**
      * Converts the String to a float.
-     *  
+     *
      * @param value
      * @return
      */
@@ -105,10 +105,10 @@ public final class PropertiesConverter {
         }
         return retorno;
     }
-    
+
     /**
-     * Converts the String to a double. 
-     * 
+     * Converts the String to a double.
+     *
      * @param value
      * @return
      */

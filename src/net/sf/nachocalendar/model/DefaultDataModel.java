@@ -53,20 +53,22 @@ public class DefaultDataModel implements DataModel {
     private HashMap data, mindata;
     private Calendar cal, check;
     private int currentmonth;
-    
+
     /**
      * Utility field holding list of DataModelListeners.
      */
     private transient java.util.ArrayList dataModelListenerList;
-    
-    /** Creates a new instance of DefaultDataModel. */
+
+    /**
+     * Creates a new instance of DefaultDataModel.
+     */
     public DefaultDataModel() {
         cal = Calendar.getInstance();
         check = Calendar.getInstance();
         data = new HashMap();
         mindata = new HashMap();
     }
-    
+
     private void changeMonth(int month) {
         currentmonth = month;
         mindata.clear();
@@ -79,19 +81,22 @@ public class DefaultDataModel implements DataModel {
             }
         }
     }
+
     /**
      * Adds new data to the Collection.
+     *
      * @param date the new date
-     * @param o the new data
+     * @param o    the new data
      */
     public void addData(Date date, Object o) {
         data.put(date, o);
         fireDataModelListenerDataChanged(new DataChangeEvent(o, date));
         currentmonth = -1;
     }
-    
+
     /**
      * Removes the provided data from the Collection.
+     *
      * @param date date to be removed
      */
     public void removeData(Date date) {
@@ -101,32 +106,35 @@ public class DefaultDataModel implements DataModel {
             fireDataModelListenerDataChanged(new DataChangeEvent(o, date));
         }
     }
-    
+
     /**
      * Returns the quantity of data in the Collection.
+     *
      * @return the size of the Collection
      */
     public int getSize() {
         return data.size();
     }
-    
+
     /**
      * Returns a Collection with the data.
+     *
      * @return Collection with the data
      */
     public Map getAll() {
         return (Map) data.clone();
     }
-    
+
     /**
      * Removes all data from the Collection.
      */
     public void clear() {
         data.clear();
     }
-    
+
     /**
      * Checks if the date provided has data.
+     *
      * @param date Date to be checked
      * @return the data or null if it has not
      */
@@ -147,7 +155,7 @@ public class DefaultDataModel implements DataModel {
         }
         return null;
     }
-    
+
     private boolean compareDates(int year, int month, int day, Date d) {
         check.setTime(d);
         if (day != check.get(Calendar.DAY_OF_MONTH)) {
@@ -161,9 +169,10 @@ public class DefaultDataModel implements DataModel {
         }
         return true;
     }
-    
+
     /**
      * Registers DataModelListener to receive events.
+     *
      * @param listener The listener to register.
      */
     public synchronized void addDataModelListener(net.sf.nachocalendar.event.DataModelListener listener) {
@@ -172,9 +181,10 @@ public class DefaultDataModel implements DataModel {
         }
         dataModelListenerList.add(listener);
     }
-    
+
     /**
      * Removes DataModelListener from the list of listeners.
+     *
      * @param listener The listener to remove.
      */
     public synchronized void removeDataModelListener(net.sf.nachocalendar.event.DataModelListener listener) {
@@ -182,7 +192,7 @@ public class DefaultDataModel implements DataModel {
             dataModelListenerList.remove(listener);
         }
     }
-    
+
     /**
      * Notifies all registered listeners about the event.
      *

@@ -40,17 +40,19 @@ import java.awt.Component;
 /**
  * Interface that must be implemented by classes used to render.
  * Headers and Week Number
+ *
  * @author Ignacio Merani
  */
 public interface HeaderRenderer {
-    
+
     /**
      * Returns the component used to render the header.
-     * @return Component to be used
-     * @param isHeader true if is used for header, false if used for week number
+     *
+     * @param isHeader  true if is used for header, false if used for week number
      * @param isWorking true if it's a working day
-     * @param value value to be show
-     * @param panel panel where this component is showed
-     */    
+     * @param value     value to be show
+     * @param panel     panel where this component is showed
+     * @return Component to be used
+     */
     Component getHeaderRenderer(HeaderPanel panel, Object value, boolean isHeader, boolean isWorking);
 }

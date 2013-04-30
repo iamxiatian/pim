@@ -9,20 +9,20 @@ import xiatian.pim.io.PimDb;
 
 public class MyTreeCellEditor extends DefaultTreeCellEditor {
 
-  public MyTreeCellEditor(JTree tree, DefaultTreeCellRenderer renderer) {
-    super(tree, renderer);
-  }
+    public MyTreeCellEditor(JTree tree, DefaultTreeCellRenderer renderer) {
+        super(tree, renderer);
+    }
 
-  public Object getCellEditorValue() {    
-    MyTreeNode node = (MyTreeNode)tree.getLastSelectedPathComponent();
-    NodeData nodeData = (NodeData)node.getUserObject();
-    Journal journal = nodeData.getJournal();
-    journal.setTitle(realEditor.getCellEditorValue().toString());
-    
-    //保存Jourlnal
-    PimDb.getInstance().updateJournal(journal);
-    
-    return nodeData;
-  }
+    public Object getCellEditorValue() {
+        MyTreeNode node = (MyTreeNode) tree.getLastSelectedPathComponent();
+        NodeData nodeData = (NodeData) node.getUserObject();
+        Journal journal = nodeData.getJournal();
+        journal.setTitle(realEditor.getCellEditorValue().toString());
+
+        //保存Jourlnal
+        PimDb.getInstance().updateJournal(journal);
+
+        return nodeData;
+    }
 
 }

@@ -25,18 +25,16 @@ import org.xml.sax.SAXException;
  * the properties of the component. Must be a
  * .properties or .xml file. See the resources
  * for examples.
- * 
- * @author Ignacio Merani
  *
- * 
+ * @author Ignacio Merani
  */
 public class CustomizerFactory {
     PropertiesSetter setter;
-    
+
     /**
-     * Constructor with a config file. Must be a 
+     * Constructor with a config file. Must be a
      * .properties or .xml file.
-     * 
+     *
      * @param config
      * @throws FileNotFoundException
      * @throws IOException
@@ -45,16 +43,17 @@ public class CustomizerFactory {
      */
     public CustomizerFactory(File config) throws FileNotFoundException, IOException, SAXException, ParserConfigurationException {
         if (config.getName().toLowerCase().endsWith(".properties")) {
-                setter = new DirectSetter(new PropertiesCustomizer(new FileInputStream(config)));
+            setter = new DirectSetter(new PropertiesCustomizer(new FileInputStream(config)));
         }
         if (config.getName().toLowerCase().endsWith(".xml")) {
-                setter = new DirectSetter(new XMLCustomizer(new FileInputStream(config)));
+            setter = new DirectSetter(new XMLCustomizer(new FileInputStream(config)));
         }
         if (setter == null) throw new IllegalArgumentException("Configuration file not valid");
     }
-    
+
     /**
      * Returns a DateField customized.
+     *
      * @return
      */
     public DateField createDateField() {
@@ -62,10 +61,10 @@ public class CustomizerFactory {
         setter.customize(retorno);
         return retorno;
     }
-    
+
     /**
      * Returns a DateField customized.
-     * 
+     *
      * @param showWeekNumbers
      * @return
      */
@@ -74,9 +73,10 @@ public class CustomizerFactory {
         setter.customize(retorno);
         return retorno;
     }
-    
+
     /**
      * Returns a DatePanel customized.
+     *
      * @return
      */
     public DatePanel createDatePanel() {
@@ -84,10 +84,10 @@ public class CustomizerFactory {
         setter.customize(retorno);
         return retorno;
     }
-    
+
     /**
      * Returns a DatePanel customized.
-     * 
+     *
      * @param showWeekNumbers
      * @return
      */
@@ -96,10 +96,10 @@ public class CustomizerFactory {
         setter.customize(retorno);
         return retorno;
     }
-    
+
     /**
      * Returns a CalendarPanel customized.
-     * 
+     *
      * @return
      */
     public CalendarPanel createCalendarPanel() {
@@ -107,10 +107,10 @@ public class CustomizerFactory {
         setter.customize(retorno);
         return retorno;
     }
-    
+
     /**
      * Returns a CalendarPanel customized.
-     * 
+     *
      * @param showWeekNumbers
      * @return
      */
@@ -119,5 +119,5 @@ public class CustomizerFactory {
         setter.customize(retorno);
         return retorno;
     }
-    
+
 }

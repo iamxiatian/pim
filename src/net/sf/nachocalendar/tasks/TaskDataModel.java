@@ -44,18 +44,22 @@ import net.sf.nachocalendar.model.DefaultDataModel;
 /**
  * Implementation of the interface DataModel, created to manage
  * tasks.
+ *
  * @author Ignacio Merani
  */
 public class TaskDataModel extends DefaultDataModel {
-    
-    /** Creates a new instance of TaskDataModel. */
+
+    /**
+     * Creates a new instance of TaskDataModel.
+     */
     public TaskDataModel() {
     }
-    
+
     /**
      * Adds a new Task to the model.
+     *
      * @param task the task to be added
-     */    
+     */
     public void addTask(Task task) {
         Date d = task.getDate();
         if (d == null) {
@@ -69,12 +73,13 @@ public class TaskDataModel extends DefaultDataModel {
         }
         col.add(task);
     }
-    
+
     /**
      * Returns a Collection with all the tasks related to a provided Date.
+     *
      * @param date the Date requested
      * @return Collection with values or null
-     */    
+     */
     public Collection getTasks(Date date) {
         Object o = getData(date);
         if (o == null) {
@@ -85,11 +90,12 @@ public class TaskDataModel extends DefaultDataModel {
         }
         return null;
     }
-    
+
     /**
      * Removes a task from the model.
+     *
      * @param task task to be removed
-     */    
+     */
     public void removeTask(Task task) {
         Collection col = getTasks(task.getDate());
         if (col != null) {

@@ -40,19 +40,21 @@ import java.util.Date;
 
 /**
  * Interface that must be implemented by classes used to render Days.
+ *
  * @author Ignacio Merani
  */
 public interface DayRenderer {
-    
+
     /**
      * Returns a component configured to render the Day.
-     * @return component to be used
+     *
      * @param daypanel Daypanel to be renderer
-     * @param day current day
-     * @param data current data
+     * @param day      current day
+     * @param data     current data
      * @param selected true if it's selected
-     * @param working true if it's a working day
-     * @param enabled true if it's enabled
-     */    
+     * @param working  true if it's a working day
+     * @param enabled  true if it's enabled
+     * @return component to be used
+     */
     Component getDayRenderer(DayPanel daypanel, Date day, Object data, boolean selected, boolean working, boolean enabled);
 }

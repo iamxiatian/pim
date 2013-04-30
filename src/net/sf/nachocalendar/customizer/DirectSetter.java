@@ -46,10 +46,8 @@ import net.sf.nachocalendar.model.DateSelectionModel;
 /**
  * Class that sets properties of components
  * using direct calls to methods.
- * 
- * @author Ignacio Merani
  *
- * 
+ * @author Ignacio Merani
  */
 public class DirectSetter implements PropertiesSetter {
     private boolean initialized;
@@ -64,25 +62,26 @@ public class DirectSetter implements PropertiesSetter {
     private int scrollPosition = CalendarPanel.LEFT;
     private int yearPosition = CalendarPanel.UP;
     private String dateFormat;
-    
+
     /**
      * Constructor with a Customizer.
+     *
      * @param customizer
      */
     public DirectSetter(Customizer customizer) {
         init(customizer);
     }
-    
+
     /**
      * Default constructor, must add a
      * Customizer via setter.
-     *
      */
-    public DirectSetter() {}
-    
+    public DirectSetter() {
+    }
+
     /**
      * Sets the current customizer.
-     * 
+     *
      * @param customizer
      */
     public void setCustomizer(Customizer customizer) {
@@ -97,49 +96,49 @@ public class DirectSetter implements PropertiesSetter {
                 this.firstDayOfWeek = Calendar.MONDAY;
             }
         }
-        
+
         allowsInvalid = customizer.getBoolean("allowsInvalid");
-        
+
         antiAliased = customizer.getBoolean("antiAliased");
-        
+
         String dateFormat = customizer.getString("dateFormat");
         if (dateFormat != null) {
             this.dateFormat = dateFormat;
         }
-        
+
         String headerRenderer = customizer.getString("headerRenderer");
         if (headerRenderer != null) {
             this.headerRenderer = loadClass(headerRenderer);
         }
-        
+
         String model = customizer.getString("model");
         if (model != null) {
             this.model = loadClass(model);
         }
-        
+
         printMoon = customizer.getBoolean("printMoon");
-        
+
         String renderer = customizer.getString("renderer");
-        
+
         if (renderer != null) {
             this.renderer = loadClass(renderer);
         }
-        
+
         showOkCancel = customizer.getBoolean("showOkCancel");
         showToday = customizer.getBoolean("showToday");
         todayCaption = customizer.getString("todayCaption");
-        
+
         String workingDays = customizer.getString("workingDays");
         if (workingDays != null) {
             String[] work = workingDays.split(",");
             boolean[] wd = new boolean[7];
-            for (int i=0; i < work.length; i++) {
+            for (int i = 0; i < work.length; i++) {
                 if (i == 7) break;
                 wd[i] = Boolean.valueOf(work[i]).booleanValue();
             }
             this.workingDays = wd;
         }
-        
+
         String selection = customizer.getString("selectionMode");
         if (selection != null) {
             if (selection.toLowerCase().equals("singleinterval")) {
@@ -149,30 +148,30 @@ public class DirectSetter implements PropertiesSetter {
                 selectionMode = DateSelectionModel.SINGLE_SELECTION;
             }
         }
-        
+
         String orientation = customizer.getString("orientation");
         if (orientation != null) {
             if (orientation.toLowerCase().equals("vertical")) {
                 this.orientation = CalendarPanel.VERTICAL;
             }
         }
-        
+
         String scrollposition = customizer.getString("scrollPosition");
         if (scrollposition != null) {
             if (scrollposition.toLowerCase().equals("right")) {
                 this.scrollPosition = CalendarPanel.RIGHT;
             }
         }
-        
+
         String yearposition = customizer.getString("yearPosition");
         if (yearposition != null) {
             if (yearposition.toLowerCase().equals("down")) {
                 this.yearPosition = CalendarPanel.DOWN;
             }
         }
-        initialized=true;
+        initialized = true;
     }
-    
+
     private Class loadClass(String name) {
         try {
             return Class.forName(name);
@@ -181,7 +180,7 @@ public class DirectSetter implements PropertiesSetter {
             return null;
         }
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.PropertiesSetter#customize(net.sf.nachocalendar.components.DateField)
      */
@@ -190,15 +189,15 @@ public class DirectSetter implements PropertiesSetter {
             throw new IllegalStateException("This setter is not initialized.");
         }
         datefield.setFirstDayOfWeek(firstDayOfWeek);
-        
+
         datefield.setAllowsInvalid(allowsInvalid);
-        
+
         datefield.setAntiAliased(antiAliased);
-        
+
         if (dateFormat != null) {
             datefield.setDateFormat(new SimpleDateFormat(dateFormat));
         }
-        
+
         if (headerRenderer != null) {
             try {
                 datefield.setHeaderRenderer((HeaderRenderer) headerRenderer.newInstance());
@@ -208,7 +207,7 @@ public class DirectSetter implements PropertiesSetter {
                 e.printStackTrace();
             }
         }
-        
+
         if (model != null) {
             try {
                 datefield.setModel((DataModel) model.newInstance());
@@ -218,9 +217,9 @@ public class DirectSetter implements PropertiesSetter {
                 e.printStackTrace();
             }
         }
-        
+
         datefield.setPrintMoon(printMoon);
-        
+
         if (renderer != null) {
             try {
                 datefield.setRenderer((DayRenderer) renderer.newInstance());
@@ -230,18 +229,18 @@ public class DirectSetter implements PropertiesSetter {
                 e.printStackTrace();
             }
         }
-        
+
         datefield.setShowOkCancel(showOkCancel);
         datefield.setShowToday(showToday);
         if (todayCaption != null)
             datefield.setTodayCaption(todayCaption);
-        
+
         if (workingDays != null) {
             datefield.setWorkingDays(workingDays);
         }
-        
+
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.PropertiesSetter#customize(net.sf.nachocalendar.components.CalendarPanel)
      */
@@ -250,7 +249,7 @@ public class DirectSetter implements PropertiesSetter {
             throw new IllegalStateException("This setter is not initialized.");
         }
         calendarpanel.setFirstDayOfWeek(firstDayOfWeek);
-        
+
         calendarpanel.setAntiAliased(antiAliased);
         calendarpanel.setSelectionMode(selectionMode);
         if (headerRenderer != null) {
@@ -262,7 +261,7 @@ public class DirectSetter implements PropertiesSetter {
                 e.printStackTrace();
             }
         }
-        
+
         if (model != null) {
             try {
                 calendarpanel.setModel((DataModel) model.newInstance());
@@ -272,9 +271,9 @@ public class DirectSetter implements PropertiesSetter {
                 e.printStackTrace();
             }
         }
-        
+
         calendarpanel.setPrintMoon(printMoon);
-        
+
         if (renderer != null) {
             try {
                 calendarpanel.setRenderer((DayRenderer) renderer.newInstance());
@@ -284,20 +283,20 @@ public class DirectSetter implements PropertiesSetter {
                 e.printStackTrace();
             }
         }
-        
+
         calendarpanel.setShowToday(showToday);
         if (todayCaption != null)
             calendarpanel.setTodayCaption(todayCaption);
-        
+
         if (workingDays != null) {
             calendarpanel.setWorkingdays(workingDays);
         }
-        
+
         calendarpanel.setOrientation(orientation);
         calendarpanel.setScrollPosition(scrollPosition);
         calendarpanel.setYearPosition(yearPosition);
     }
-    
+
     /* (non-Javadoc)
      * @see net.sf.nachocalendar.customizer.PropertiesSetter#customize(net.sf.nachocalendar.components.DatePanel)
      */
@@ -306,7 +305,7 @@ public class DirectSetter implements PropertiesSetter {
             throw new IllegalStateException("This setter is not initialized.");
         }
         datepanel.setFirstDayOfWeek(firstDayOfWeek);
-        
+
         datepanel.setAntiAliased(antiAliased);
         datepanel.setSelectionMode(selectionMode);
         if (headerRenderer != null) {
@@ -318,7 +317,7 @@ public class DirectSetter implements PropertiesSetter {
                 e.printStackTrace();
             }
         }
-        
+
         if (model != null) {
             try {
                 datepanel.setModel((DataModel) model.newInstance());
@@ -328,9 +327,9 @@ public class DirectSetter implements PropertiesSetter {
                 e.printStackTrace();
             }
         }
-        
+
         datepanel.setPrintMoon(printMoon);
-        
+
         if (renderer != null) {
             try {
                 datepanel.setRenderer((DayRenderer) renderer.newInstance());
@@ -340,11 +339,11 @@ public class DirectSetter implements PropertiesSetter {
                 e.printStackTrace();
             }
         }
-        
+
         datepanel.setShowToday(showToday);
         if (todayCaption != null)
             datepanel.setTodayCaption(todayCaption);
-        
+
         if (workingDays != null) {
             datepanel.setWorkingDays(workingDays);
         }

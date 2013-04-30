@@ -36,14 +36,17 @@
 package net.sf.nachocalendar.event;
 
 import java.util.EventListener;
+
 /**
  * Listener interface to DateChange events.
+ *
  * @author Ignacio Merani
  */
 public interface DataModelListener extends EventListener {
     /**
      * Event fired when a date changes.
+     *
      * @param evt event fired
-     */    
+     */
     void dataChanged(DataChangeEvent evt);
 }

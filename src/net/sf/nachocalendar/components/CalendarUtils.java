@@ -47,27 +47,32 @@ import java.util.ResourceBundle;
 
 /**
  * Collection of utilities.
- * @author  Ignacio Merani
+ *
+ * @author Ignacio Merani
  */
 public final class CalendarUtils {
     private static DateFormat dateformat;
     private static Calendar calendar1, calendar2;
+
     //private static ResourceBundle bundle = ResourceBundle.getBundle("net.sf.nachocalendar.language");
     static {
         dateformat = DateFormat.getDateInstance();
         calendar1 = new GregorianCalendar();
         calendar2 = new GregorianCalendar();
     }
-    
-    /** Creates a new instance of CalendarUtils */
+
+    /**
+     * Creates a new instance of CalendarUtils
+     */
     private CalendarUtils() {
     }
-    
+
     /**
      * Converts Object to Date.
+     *
      * @param o Object to convert
-     * @throws ParseException if something goes wrong
      * @return a Date
+     * @throws ParseException if something goes wrong
      */
     public static Date convertToDate(Object o) throws ParseException {
         if (o == null) return null;
@@ -75,22 +80,23 @@ public final class CalendarUtils {
             return (Date) o;
         }
         if (o instanceof Timestamp) {
-            return new Date(new java.sql.Date(((Timestamp)o).getTime()).getTime());
-        }        
+            return new Date(new java.sql.Date(((Timestamp) o).getTime()).getTime());
+        }
         if (o instanceof java.sql.Date) {
             return new Date(((java.sql.Date) o).getTime());
         }
         return dateformat.parse(o.toString());
     }
-    
+
     private static synchronized boolean isSameDay() {
         if (calendar1.get(Calendar.DAY_OF_YEAR) != calendar2.get(Calendar.DAY_OF_YEAR)) return false;
         if (calendar1.get(Calendar.YEAR) != calendar2.get(Calendar.YEAR)) return false;
         return true;
     }
-    
+
     /**
      * Compares two dates.
+     *
      * @param d1 first date
      * @param d2 second date
      * @return true if both dates are the same day
@@ -100,9 +106,10 @@ public final class CalendarUtils {
         calendar2.setTime(d2);
         return isSameDay();
     }
-    
+
     /**
      * Compares provided date with the current Date.
+     *
      * @param date date to compare
      * @return true if is current day
      */
@@ -111,7 +118,7 @@ public final class CalendarUtils {
         calendar2.setTime(date);
         return isSameDay();
     }
-    
+
     /**
      * Returns a localized message.
      * @param key message key

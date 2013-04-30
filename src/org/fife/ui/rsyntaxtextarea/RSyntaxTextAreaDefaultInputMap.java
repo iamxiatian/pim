@@ -34,8 +34,8 @@ import org.fife.ui.rtextarea.RTADefaultInputMap;
  * The default input map for an <code>RSyntaxTextArea</code>.
  * Currently, the new key bindings include:
  * <ul>
- *   <li>Shift+Tab indents the current line or currently selected lines
- *       to the left.
+ * <li>Shift+Tab indents the current line or currently selected lines
+ * to the left.
  * </ul>
  *
  * @author Robert Futrell
@@ -43,32 +43,32 @@ import org.fife.ui.rtextarea.RTADefaultInputMap;
  */
 public class RSyntaxTextAreaDefaultInputMap extends RTADefaultInputMap {
 
-	/**
-	 * Constructs the default input map for an <code>RSyntaxTextArea</code>.
-	 */
-	public RSyntaxTextAreaDefaultInputMap() {
+    /**
+     * Constructs the default input map for an <code>RSyntaxTextArea</code>.
+     */
+    public RSyntaxTextAreaDefaultInputMap() {
 
-		int defaultMod = getDefaultModifier();
-		//int ctrl = InputEvent.CTRL_MASK;
-		int shift = InputEvent.SHIFT_MASK;
-		//int alt = InputEvent.ALT_MASK;
+        int defaultMod = getDefaultModifier();
+        //int ctrl = InputEvent.CTRL_MASK;
+        int shift = InputEvent.SHIFT_MASK;
+        //int alt = InputEvent.ALT_MASK;
 
-		put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB,   shift),				RSyntaxTextAreaEditorKit.rstaDecreaseIndentAction);
-		put(KeyStroke.getKeyStroke('}'),									RSyntaxTextAreaEditorKit.rstaCloseCurlyBraceAction);
-		put(KeyStroke.getKeyStroke('/'), 									RSyntaxTextAreaEditorKit.rstaCloseMarkupTagAction);
-		put(KeyStroke.getKeyStroke(KeyEvent.VK_SLASH, defaultMod),			RSyntaxTextAreaEditorKit.rstaToggleCommentAction);
-		put(KeyStroke.getKeyStroke(KeyEvent.VK_OPEN_BRACKET, defaultMod),	RSyntaxTextAreaEditorKit.rstaGoToMatchingBracketAction);
+        put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB, shift), RSyntaxTextAreaEditorKit.rstaDecreaseIndentAction);
+        put(KeyStroke.getKeyStroke('}'), RSyntaxTextAreaEditorKit.rstaCloseCurlyBraceAction);
+        put(KeyStroke.getKeyStroke('/'), RSyntaxTextAreaEditorKit.rstaCloseMarkupTagAction);
+        put(KeyStroke.getKeyStroke(KeyEvent.VK_SLASH, defaultMod), RSyntaxTextAreaEditorKit.rstaToggleCommentAction);
+        put(KeyStroke.getKeyStroke(KeyEvent.VK_OPEN_BRACKET, defaultMod), RSyntaxTextAreaEditorKit.rstaGoToMatchingBracketAction);
 
-		// FIXME:  The keystroke associated with this action should be dynamic and
-		// configurable and synchronized with the "trigger" defined in RSyntaxTextArea's
-		// CodeTemplateManager.
-		// NOTE:  no modifiers => mapped to keyTyped.  If we had "0" as a second
-		// second parameter, we'd get the template action (keyPressed) AND the
-		// default space action (keyTyped).
-		//put(KeyStroke.getKeyStroke(' '),			RSyntaxTextAreaEditorKit.rstaPossiblyInsertTemplateAction);
-		put(CodeTemplateManager.TEMPLATE_KEYSTROKE,	RSyntaxTextAreaEditorKit.rstaPossiblyInsertTemplateAction);
+        // FIXME:  The keystroke associated with this action should be dynamic and
+        // configurable and synchronized with the "trigger" defined in RSyntaxTextArea's
+        // CodeTemplateManager.
+        // NOTE:  no modifiers => mapped to keyTyped.  If we had "0" as a second
+        // second parameter, we'd get the template action (keyPressed) AND the
+        // default space action (keyTyped).
+        //put(KeyStroke.getKeyStroke(' '),			RSyntaxTextAreaEditorKit.rstaPossiblyInsertTemplateAction);
+        put(CodeTemplateManager.TEMPLATE_KEYSTROKE, RSyntaxTextAreaEditorKit.rstaPossiblyInsertTemplateAction);
 
-	}
+    }
 
 
 }

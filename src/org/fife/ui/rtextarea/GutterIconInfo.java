@@ -39,21 +39,21 @@ import javax.swing.Icon;
 public interface GutterIconInfo {
 
 
-	/**
-	 * Returns the icon being rendered.
-	 *
-	 * @return The icon being rendered.
-	 */
-	public Icon getIcon();
+    /**
+     * Returns the icon being rendered.
+     *
+     * @return The icon being rendered.
+     */
+    public Icon getIcon();
 
 
-	/**
-	 * Returns the offset that is being tracked.  The line of this offset is
-	 * where the icon is rendered.  This offset may change as the user types
-	 * to track the new location of the marked offset.
-	 *
-	 * @return The offset being tracked.
-	 */
-	public int getMarkedOffset();
+    /**
+     * Returns the offset that is being tracked.  The line of this offset is
+     * where the icon is rendered.  This offset may change as the user types
+     * to track the new location of the marked offset.
+     *
+     * @return The offset being tracked.
+     */
+    public int getMarkedOffset();
 
 }

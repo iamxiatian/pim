@@ -52,12 +52,15 @@ import net.sf.nachocalendar.event.YearChangeEvent;
  * and has two arrows for unitary changes. It fires a YearChangeEvent
  * when the month under or overflows. It also fires a ChangeEvent when
  * the month is changed.
+ *
  * @author Ignacio Merani
  */
 public class MonthScroller extends javax.swing.JPanel {
-  private static final long serialVersionUID = 305057216752369889L;
+    private static final long serialVersionUID = 305057216752369889L;
 
-    /** Creates new form MonthScroller. */
+    /**
+     * Creates new form MonthScroller.
+     */
     public MonthScroller() {
         initComponents();
         DateFormatSymbols symbols = FormatSymbols.getSingletonObject(); //get the formatter
@@ -68,7 +71,7 @@ public class MonthScroller extends javax.swing.JPanel {
         cMonths.setModel(new DefaultComboBoxModel(months));
         cMonths.removeItemAt(cMonths.getItemCount() - 1);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,40 +79,40 @@ public class MonthScroller extends javax.swing.JPanel {
      */
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
-        
+
         bPrevious = new ArrowButton(SwingConstants.WEST);
         cMonths = new javax.swing.JComboBox();
         bNext = new ArrowButton(SwingConstants.EAST);
-        
+
         FormListener formListener = new FormListener();
-        
+
         setLayout(new java.awt.GridBagLayout());
-        
+
         setBorder(new javax.swing.border.EtchedBorder());
         bPrevious.addActionListener(formListener);
-        
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weighty = 1.0;
         add(bPrevious, gridBagConstraints);
-        
+
         cMonths.addActionListener(formListener);
-        
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(cMonths, gridBagConstraints);
-        
+
         bNext.addActionListener(formListener);
-        
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weighty = 1.0;
         add(bNext, gridBagConstraints);
-        
+
     }
-    
+
     private class FormListener implements java.awt.event.ActionListener {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             if (evt.getSource() == bPrevious) {
@@ -121,11 +124,11 @@ public class MonthScroller extends javax.swing.JPanel {
             }
         }
     }
-    
+
     private void cMonthsActionPerformed(java.awt.event.ActionEvent evt) {
         fireChangeListenerStateChanged(new ChangeEvent(this));
     }
-    
+
     /**
      * Changes to the next month.
      */
@@ -139,7 +142,7 @@ public class MonthScroller extends javax.swing.JPanel {
         }
         fireChangeListenerStateChanged(new ChangeEvent(this));
     }
-    
+
     /**
      * Changes to the previous month.
      */
@@ -153,95 +156,98 @@ public class MonthScroller extends javax.swing.JPanel {
         }
         fireChangeListenerStateChanged(new ChangeEvent(this));
     }
-    
+
     private void bNextActionPerformed(java.awt.event.ActionEvent evt) {
         nextMonth();
     }
-    
+
     private void bPreviousActionPerformed(java.awt.event.ActionEvent evt) {
         previousMonth();
     }
-    
+
     /**
      * Changes de current month.
+     *
      * @param month new month
      */
     public void setMonth(int month) {
         cMonths.setSelectedIndex(month);
     }
-    
+
     /**
      * Returns the current month.
+     *
      * @return current month
      */
     public int getMonth() {
         return cMonths.getSelectedIndex();
     }
-    
+
     /**
      * Changes the icon for the Next button.
+     *
      * @param icon new Icon or null to show the default arrow
      */
     public void setNextIcon(Icon icon) {
         bNext.setIcon(icon);
     }
-    
+
     /**
      * Changes the icon for the Previous button.
+     *
      * @param icon new Icon or null to show the default arrow
      */
     public void setPreviousIcon(Icon icon) {
         bPrevious.setIcon(icon);
     }
-    
+
     /**
      * Changes the text of the Next button.
+     *
      * @param text new text or null to show the default arrow
      */
     public void setNextText(String text) {
         bNext.setText(text);
     }
-    
+
     /**
      * Changes the text of the Previous button.
+     *
      * @param text new text or null to show the default arrow
      */
     public void setPreviousText(String text) {
         bPrevious.setText(text);
     }
-    
+
     /**
      * Registers YearChangeListener to receive events.
      *
-     * @param listener
-     *            The listener to register.
+     * @param listener The listener to register.
      */
     public synchronized void addYearChangeListener(
-    net.sf.nachocalendar.event.YearChangeListener listener) {
+            net.sf.nachocalendar.event.YearChangeListener listener) {
         if (yearChangeListenerList == null) {
             yearChangeListenerList = new java.util.ArrayList();
         }
         yearChangeListenerList.add(listener);
     }
-    
+
     /**
      * Removes YearChangeListener from the list of listeners.
      *
-     * @param listener
-     *            The listener to remove.
+     * @param listener The listener to remove.
      */
     public synchronized void removeYearChangeListener(
-    net.sf.nachocalendar.event.YearChangeListener listener) {
+            net.sf.nachocalendar.event.YearChangeListener listener) {
         if (yearChangeListenerList != null) {
             yearChangeListenerList.remove(listener);
         }
     }
-    
+
     /**
      * Notifies all registered listeners about the event.
      *
-     * @param event
-     *            The event to be fired
+     * @param event The event to be fired
      */
     private void fireYearChangeListenerYearIncreased(YearChangeEvent event) {
         java.util.ArrayList list;
@@ -253,15 +259,14 @@ public class MonthScroller extends javax.swing.JPanel {
         }
         for (int i = 0; i < list.size(); i++) {
             ((net.sf.nachocalendar.event.YearChangeListener) list.get(i))
-            .yearIncreased(event);
+                    .yearIncreased(event);
         }
     }
-    
+
     /**
      * Notifies all registered listeners about the event.
      *
-     * @param event
-     *            The event to be fired
+     * @param event The event to be fired
      */
     private void fireYearChangeListenerYearDecreased(YearChangeEvent event) {
         java.util.ArrayList list;
@@ -273,45 +278,42 @@ public class MonthScroller extends javax.swing.JPanel {
         }
         for (int i = 0; i < list.size(); i++) {
             ((net.sf.nachocalendar.event.YearChangeListener) list.get(i))
-            .yearDecreased(event);
+                    .yearDecreased(event);
         }
     }
-    
+
     /**
      * Registers ChangeListener to receive events.
      *
-     * @param listener
-     *            The listener to register.
+     * @param listener The listener to register.
      */
     public synchronized void addChangeListener(
-    javax.swing.event.ChangeListener listener) {
+            javax.swing.event.ChangeListener listener) {
         if (changeListenerList == null) {
             changeListenerList = new java.util.ArrayList();
         }
         changeListenerList.add(listener);
     }
-    
+
     /**
      * Removes ChangeListener from the list of listeners.
      *
-     * @param listener
-     *            The listener to remove.
+     * @param listener The listener to remove.
      */
     public synchronized void removeChangeListener(
-    javax.swing.event.ChangeListener listener) {
+            javax.swing.event.ChangeListener listener) {
         if (changeListenerList != null) {
             changeListenerList.remove(listener);
         }
     }
-    
+
     /**
      * Notifies all registered listeners about the event.
      *
-     * @param event
-     *            The event to be fired
+     * @param event The event to be fired
      */
     private void fireChangeListenerStateChanged(
-    javax.swing.event.ChangeEvent event) {
+            javax.swing.event.ChangeEvent event) {
         java.util.ArrayList list;
         synchronized (this) {
             if (changeListenerList == null) {
@@ -321,12 +323,13 @@ public class MonthScroller extends javax.swing.JPanel {
         }
         for (int i = 0; i < list.size(); i++) {
             ((javax.swing.event.ChangeListener) list.get(i))
-            .stateChanged(event);
+                    .stateChanged(event);
         }
     }
-    
+
     /**
      * Enables or disables the component.
+     *
      * @param b true for enabling
      */
     public void setEnabled(boolean b) {
@@ -334,31 +337,32 @@ public class MonthScroller extends javax.swing.JPanel {
         bPrevious.setEnabled(b);
         cMonths.setEnabled(b);
     }
-    
+
     /**
      * Getter for enabled property.
+     *
      * @return true if it's enabled
      */
     public boolean isEnabled() {
-      if(cMonths==null) return false;
+        if (cMonths == null) return false;
         return cMonths.isEnabled();
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bNext;
     private javax.swing.JButton bPrevious;
     private javax.swing.JComboBox cMonths;
     // End of variables declaration//GEN-END:variables
-    
+
     /**
      * Utility field holding list of YearChangeListeners.
      */
     private transient java.util.ArrayList yearChangeListenerList;
-    
+
     /**
      * Utility field holding list of ChangeListeners.
      */
     private transient java.util.ArrayList changeListenerList;
-    
+
 }

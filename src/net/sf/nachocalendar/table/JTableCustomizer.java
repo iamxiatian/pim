@@ -41,45 +41,52 @@ import javax.swing.table.TableColumn;
 
 /**
  * @author Ignacio Merani
- *
  */
 public final class JTableCustomizer {
-    
+
     /**
      * Constructor declared as privete to prevent instantiation.
      */
     private JTableCustomizer() {
     }
-    
-    /** Sets the default editor/renderer for Date objets to provided JTable.
+
+    /**
+     * Sets the default editor/renderer for Date objets to provided JTable.
+     *
      * @param table JTable to set up
      */
     public static void setDefaultEditor(JTable table) {
         DateFormat format = DateFormat.getDateInstance(DateFormat.SHORT);
         setDefaultEditor(table, format);
     }
-    
-    /** Sets the default editor/renderer for Date objets to provided JTable.
-     * @param table JTable to set up
+
+    /**
+     * Sets the default editor/renderer for Date objets to provided JTable.
+     *
+     * @param table  JTable to set up
      * @param format Format to use
      */
     public static void setDefaultEditor(JTable table, DateFormat format) {
         table.setDefaultEditor(Date.class, new DateFieldTableEditor());
         table.setDefaultRenderer(Date.class, new DateRendererDecorator(table.getDefaultRenderer(Date.class), format));
     }
-    
-    /** Sets the editor/renderer for Date objects to provided JTable, for the specified column.
+
+    /**
+     * Sets the editor/renderer for Date objects to provided JTable, for the specified column.
+     *
      * @param table JTable to set up
-     * @param row Column to apply
+     * @param row   Column to apply
      */
     public static void setEditorForRow(JTable table, int row) {
         DateFormat format = DateFormat.getDateInstance(DateFormat.SHORT);
         setEditorForRow(table, row, format);
     }
-    
-    /** Sets the editor/renderer for Date objects to provided JTable, for the specified column.
-     * @param table JTable to set up
-     * @param row Column to apply
+
+    /**
+     * Sets the editor/renderer for Date objects to provided JTable, for the specified column.
+     *
+     * @param table  JTable to set up
+     * @param row    Column to apply
      * @param format Format to use
      */
     public static void setEditorForRow(JTable table, int row, DateFormat format) {

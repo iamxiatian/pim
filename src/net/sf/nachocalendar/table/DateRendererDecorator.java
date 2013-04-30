@@ -41,44 +41,46 @@ import javax.swing.table.TableCellRenderer;
 
 /**
  * @author Ignacio Merani
- *
  */
 public class DateRendererDecorator implements TableCellRenderer {
     private TableCellRenderer renderer;
     private DateFormat format;
-    
+
     /**
      * Default constructor.
      */
     public DateRendererDecorator() {
         this(new DefaultTableCellRenderer());
     }
-    
-    /** Constructor using the renderer to decorate.
+
+    /**
+     * Constructor using the renderer to decorate.
+     *
      * @param renderer renderer to decorate
      */
     public DateRendererDecorator(TableCellRenderer renderer) {
         this(renderer, DateFormat.getDateInstance(DateFormat.SHORT));
     }
-    
-    /** Constructor specifying the format.
-     * 
+
+    /**
+     * Constructor specifying the format.
+     *
      * @param renderer renderer to decorate
-     * @param format format to use
+     * @param format   format to use
      */
     public DateRendererDecorator(TableCellRenderer renderer, DateFormat format) {
         this.format = format;
         if (renderer == null) renderer = new DefaultTableCellRenderer();
         this.renderer = renderer;
     }
-    
+
     /**
      * @see javax.swing.table.TableCellRenderer#getTableCellRendererComponent(javax.swing.JTable, java.lang.Object, boolean, boolean, int, int)
      */
     public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean isEnabled, int row, int col) {
-        if ((value != null) && (value instanceof Date)){          
-          value = format.format((Date) value);
+                                                   boolean isSelected, boolean isEnabled, int row, int col) {
+        if ((value != null) && (value instanceof Date)) {
+            value = format.format((Date) value);
         }
         Component retorno = renderer.getTableCellRendererComponent(table, value, isSelected, isEnabled, row, col);
         return retorno;

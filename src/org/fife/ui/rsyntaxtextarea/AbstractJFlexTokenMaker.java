@@ -37,10 +37,10 @@ import javax.swing.text.Segment;
  */
 public abstract class AbstractJFlexTokenMaker extends TokenMakerBase {
 
-	protected Segment s;
+    protected Segment s;
 
-	protected int start;		// Just for states.
-	protected int offsetShift;	// As parser always starts at 0, but our line doesn't.
+    protected int start;        // Just for states.
+    protected int offsetShift;    // As parser always starts at 0, but our line doesn't.
 
 
 }

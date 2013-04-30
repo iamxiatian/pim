@@ -47,12 +47,14 @@ import net.sf.nachocalendar.customizer.PropertiesCustomizer;
 import net.sf.nachocalendar.customizer.PropertiesSetter;
 import net.sf.nachocalendar.customizer.XMLCustomizer;
 
-/** Factory with convenient methods to get components ready to use.
+/**
+ * Factory with convenient methods to get components ready to use.
+ *
  * @author Ignacio Merani
  */
 public final class CalendarFactory {
     private static PropertiesSetter setter;
-    
+
     static {
         InputStream is = ClassLoader.getSystemResourceAsStream("nachocalendar.properties");
         if (is != null) {
@@ -62,7 +64,7 @@ public final class CalendarFactory {
                 // do nothing
             }
         }
-        
+
         if (setter == null) {
             is = ClassLoader.getSystemResourceAsStream("nachocalendar.xml");
             if (is != null) {
@@ -74,11 +76,16 @@ public final class CalendarFactory {
             }
         }
     }
-    /** Default constructor, declared as private. */
+
+    /**
+     * Default constructor, declared as private.
+     */
     public CalendarFactory() {
     }
 
-    /** Returns a plain DateField.
+    /**
+     * Returns a plain DateField.
+     *
      * @return a new DatePanel
      */
     public static DateField createDateField() {
@@ -89,7 +96,9 @@ public final class CalendarFactory {
         return retorno;
     }
 
-    /** Utility method used to set a DateField.
+    /**
+     * Utility method used to set a DateField.
+     *
      * @param df DateField to set
      */
     private static void configureDateField(DateField df) {
@@ -97,19 +106,23 @@ public final class CalendarFactory {
         df.setHeaderRenderer(new DefaultHeaderRenderer());
     }
 
-    /** Creates a plain CalendarPanel.
+    /**
+     * Creates a plain CalendarPanel.
+     *
      * @return a new CalendarPanel
      */
     public static CalendarPanel createCalendarPanel() {
         CalendarPanel retorno = new CalendarPanel();
         if (setter != null) {
             setter.customize(retorno);
-        } else configureCalendarPanel(retorno); 
+        } else configureCalendarPanel(retorno);
         return retorno;
     }
 
-    /** Creates a plain CalendarPanel.
-     * @param quantity quantity of months to show at once
+    /**
+     * Creates a plain CalendarPanel.
+     *
+     * @param quantity    quantity of months to show at once
      * @param orientation the orientation
      * @return a new CalendarPanel
      */
@@ -121,20 +134,24 @@ public final class CalendarFactory {
         return retorno;
     }
 
-    /** Creates a plain CalendarPanel.
+    /**
+     * Creates a plain CalendarPanel.
+     *
      * @param quantity quantity of months to show at once
      * @return a new CalendarPanel
      */
     public static CalendarPanel createCalendarPanel(int quantity) {
         CalendarPanel retorno = new CalendarPanel(quantity,
-            CalendarPanel.VERTICAL);
+                CalendarPanel.VERTICAL);
         if (setter != null) {
             setter.customize(retorno);
         } else configureCalendarPanel(retorno);
         return retorno;
     }
 
-    /** Utility method used to set a CalendarPanel.
+    /**
+     * Utility method used to set a CalendarPanel.
+     *
      * @param cp CalendarPanel to set
      */
     private static void configureCalendarPanel(CalendarPanel cp) {
@@ -142,7 +159,9 @@ public final class CalendarFactory {
         cp.setHeaderRenderer(new DefaultHeaderRenderer());
     }
 
-    /** Utility method used to configure a DatePanel.
+    /**
+     * Utility method used to configure a DatePanel.
+     *
      * @param dp DatePanel to set
      */
     private static void configureDatePanel(DatePanel dp) {
@@ -150,7 +169,9 @@ public final class CalendarFactory {
         dp.setRenderer(new DefaultDayRenderer());
     }
 
-    /** Creates a plain DatePanel.
+    /**
+     * Creates a plain DatePanel.
+     *
      * @return a new DatePanel
      */
     public static DatePanel createDatePanel() {
@@ -161,7 +182,9 @@ public final class CalendarFactory {
         return retorno;
     }
 
-    /** Creates a plain DatePanel.
+    /**
+     * Creates a plain DatePanel.
+     *
      * @param showWeekNumbers true to show week numbers
      * @return a new DatePanel
      */

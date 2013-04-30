@@ -48,19 +48,21 @@ import net.sf.nachocalendar.components.FormatSymbols;
 
 /**
  * Factory for holiday showing components.
- * 
+ *
  * @author Ignacio Merani
  */
 public final class HoliDayCalendarFactory {
-    /** Default Constructor. */
+    /**
+     * Default Constructor.
+     */
     private static DateFormatter requiredFormatter = new DateFormatter(); // setup
-                                                                          // a
-                                                                          // default
-                                                                          // formatter
+    // a
+    // default
+    // formatter
 
     private static Locale requiredLocale = new java.util.Locale(""); // setup a
-                                                                     // default
-                                                                     // locale
+    // default
+    // locale
 
     private HoliDayCalendarFactory() {
 
@@ -68,7 +70,7 @@ public final class HoliDayCalendarFactory {
 
     /**
      * Returns a formatted DateField.
-     * 
+     *
      * @return a new formatted DatePanel
      */
 
@@ -89,7 +91,7 @@ public final class HoliDayCalendarFactory {
 
     /**
      * Creates a DateField with a parent Dialog.
-     * 
+     *
      * @return a new DateField
      */
     public static DateField createDateField() {
@@ -102,15 +104,13 @@ public final class HoliDayCalendarFactory {
 
     /**
      * Creates a new CalendarPanel.
-     * 
-     * @param quantity
-     *            quantity of months to show
-     * @param orientation
-     *            the orientation
+     *
+     * @param quantity    quantity of months to show
+     * @param orientation the orientation
      * @return a new CalendarPanel
      */
     public static CalendarPanel createCalendarPanel(int quantity,
-            int orientation) {
+                                                    int orientation) {
         CalendarPanel cp = new CalendarPanel(quantity, orientation);
         cp.setRenderer(new HolidayDecorator(new DefaultDayRenderer()));
         cp.setHeaderRenderer(new DefaultHeaderRenderer());
@@ -120,7 +120,7 @@ public final class HoliDayCalendarFactory {
 
     /**
      * Creates a new CalendarPanel with default values.
-     * 
+     *
      * @return a new CalendarPanel
      */
     public static CalendarPanel createCalendarPanel() {
@@ -134,7 +134,7 @@ public final class HoliDayCalendarFactory {
     /**
      * Factory Method to create a DatePanel customized to show holidays. It
      * takes care of all the initial setup.
-     * 
+     *
      * @return a new DatePanel
      */
     public static DatePanel createDatePanel() {
@@ -146,9 +146,8 @@ public final class HoliDayCalendarFactory {
     /**
      * Factory Method to create a DatePanel customized to show holidays. It
      * takes care of all the initial setup.
-     * 
-     * @param showWeekNumbers
-     *            true to show the week numbers
+     *
+     * @param showWeekNumbers true to show the week numbers
      * @return a new DatePanel
      */
     public static DatePanel createDatePanel(boolean showWeekNumbers) {

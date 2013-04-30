@@ -44,11 +44,14 @@ import javax.swing.SwingConstants;
 
 /**
  * Default implementation of HeaderRenderer.
+ *
  * @author Ignacio Merani
  */
 public class DefaultHeaderRenderer extends JLabel implements HeaderRenderer {
-    
-    /** Creates a new instance of DefaultHeaderRenderer. */
+
+    /**
+     * Creates a new instance of DefaultHeaderRenderer.
+     */
     public DefaultHeaderRenderer() {
         super();
         setOpaque(true);
@@ -59,18 +62,19 @@ public class DefaultHeaderRenderer extends JLabel implements HeaderRenderer {
         setVerticalAlignment(SwingConstants.CENTER);
         setHorizontalAlignment(SwingConstants.CENTER);
     }
-    
+
     /**
      * Returns the component used to render the header.
-     * @return Component to be used
-     * @param isHeader true if is used for header, false if used for week number
+     *
+     * @param isHeader  true if is used for header, false if used for week number
      * @param isWorking true if it's a working day
-     * @param value value to be show
-     * @param panel panel where this component is showed
-     */    
+     * @param value     value to be show
+     * @param panel     panel where this component is showed
+     * @return Component to be used
+     */
     public Component getHeaderRenderer(HeaderPanel panel, Object value, boolean isHeader, boolean isWorking) {
         setText(value.toString());
         return this;
     }
-    
+
 }

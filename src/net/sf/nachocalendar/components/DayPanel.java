@@ -57,63 +57,65 @@ import javax.swing.JComponent;
 
 /**
  * Component used to display a day. It has to had a renderer to paint itself
+ *
  * @author Ignacio Merani
  */
 public class DayPanel extends JComponent {
     private Date date;
-//    private Color cselected, cunselected;
+    //    private Color cselected, cunselected;
     private Object data;
     javax.swing.JTable d;
     private boolean antiAliased;
-    
+
     /**
      * Holds value of property renderer.
      */
     private DayRenderer renderer;
-    
+
     /**
      * Holds value of property working.
      */
     private boolean working;
-    
+
     /**
      * Holds value of property componentEnabled.
      */
     private boolean componentEnabled;
-    
+
     /**
      * Holds value of property enabled.
      */
     private boolean enabled;
-    
+
     /**
      * Holds value of property selected.
      */
     private boolean selected;
-    
+
     /**
      * Holds value of property index.
      */
     private int index;
-    
+
     /**
      * Holds the Calculator for the Moon
      */
     private MoonCalculation moonCalculator;
-    
+
     /**
      * size of the moon
      */
-    
-    private int moonSize=7;
-    
+
+    private int moonSize = 7;
+
     /**
      * specifies if we shall print the moon signs or not
      */
     private boolean printMoon;
-    
+
     /**
      * Creates a new instance of DayPanel.
+     *
      * @param renderer renderer used to paint
      */
     public DayPanel(DayRenderer renderer, int index) {
@@ -129,79 +131,87 @@ public class DayPanel extends JComponent {
         setFocusable(true);
         moonCalculator = new MoonCalculation();
     }
-    
+
     /**
      * Sets the displaying date.
+     *
      * @param d new date
-     */    
+     */
     public void setDate(Date d) {
         date = d;
         repaint();
     }
-    
+
     /**
      * Return the displaying date.
+     *
      * @return the Date
-     */    
+     */
     public Date getDate() {
         return date;
     }
-    
+
     /**
      * Sets the current data.
+     *
      * @param d the data
-     */    
+     */
     public void setData(Object d) {
         data = d;
         repaint();
     }
-    
+
     /**
      * Returns the current data.
+     *
      * @return current data
-     */    
+     */
     public Object getData() {
         return data;
     }
-    
+
     /**
      * Getter for property renderer.
+     *
      * @return Value of property renderer.
      */
     public DayRenderer getRenderer() {
         return this.renderer;
-    }    
-    
+    }
+
     /**
      * Setter for property renderer.
+     *
      * @param renderer New value of property renderer.
      */
     public void setRenderer(DayRenderer renderer) {
         this.renderer = renderer;
     }
-    
+
     /**
      * Getter for property working.
+     *
      * @return Value of property working.
      */
     public boolean isWorking() {
         return this.working;
     }
-    
+
     /**
      * Setter for property working.
+     *
      * @param working New value of property working.
      */
     public void setWorking(boolean working) {
         this.working = working;
     }
-    
+
     /**
      * Invoked by Swing to draw components.
      * Applications should not invoke <code>paint</code> directly,
      * but should instead use the <code>repaint</code> method to
      * schedule the component for redrawing.
-     * <p>
+     * <p/>
      * This method actually delegates the work of painting to three
      * protected methods: <code>paintComponent</code>,
      * <code>paintBorder</code>,
@@ -214,7 +224,7 @@ public class DayPanel extends JComponent {
      * <code>paint</code> method should just override
      * <code>paintComponent</code>.
      *
-     * @param g  the <code>Graphics</code> context in which to paint
+     * @param g the <code>Graphics</code> context in which to paint
      */
     public void paint(Graphics g) {
         Component comp = renderer.getDayRenderer(this, date, data, isSelected(), working, (isEnabled() && (isComponentEnabled())));
@@ -225,108 +235,120 @@ public class DayPanel extends JComponent {
         } else {
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
         }
-        
+
         comp.paint(g);
         if (isEnabled()) {
-          if (CalendarUtils.isToday(date)) {
-            g.setColor(Color.red);
-            g.drawOval(1,1, getWidth() - 2, getHeight() - 2);
-          }
+            if (CalendarUtils.isToday(date)) {
+                g.setColor(Color.red);
+                g.drawOval(1, 1, getWidth() - 2, getHeight() - 2);
+            }
 
             //MoonPainting within minimal size
-          if (printMoon && getWidth() > moonSize && getHeight() > moonSize) {
-            g = moonCalculator.drawMoon(g, date, getWidth()-moonSize-1, 0,moonSize);
-          }
+            if (printMoon && getWidth() > moonSize && getHeight() > moonSize) {
+                g = moonCalculator.drawMoon(g, date, getWidth() - moonSize - 1, 0, moonSize);
+            }
         }
     }
-    
+
     /**
      * Getter for property selected.
+     *
      * @return Value of property selected.
      */
     public boolean isSelected() {
         return this.selected;
-    }    
+    }
 
     /**
      * Setter for property selected.
+     *
      * @param selected New value of property selected.
      */
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
-    
+
     /**
      * Getter for property index.
+     *
      * @return Value of property index.
      */
     public int getIndex() {
         return this.index;
     }
-    
+
     /**
      * Setter for property index.
+     *
      * @param index New value of property index.
      */
     public void setIndex(int index) {
         this.index = index;
     }
-    
+
     /**
      * Getter for property componentEnabled.
+     *
      * @return Value of property componentEnabled.
      */
     public boolean isComponentEnabled() {
         return this.componentEnabled;
     }
-    
+
     /**
      * Setter for property componentEnabled.
+     *
      * @param componentEnabled New value of property componentEnabled.
      */
     public void setComponentEnabled(boolean componentEnabled) {
         this.componentEnabled = componentEnabled;
         super.setEnabled(enabled && componentEnabled);
     }
-    
+
     /**
      * Getter for property enabled.
+     *
      * @return Value of property enabled.
      */
     public boolean isEnabled() {
         return this.enabled;
     }
-    
+
     /**
      * Setter for property enabled.
+     *
      * @param enabled New value of property enabled.
      */
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
         super.setEnabled(enabled && componentEnabled);
     }
+
     /**
      * @return Returns the antiAliased.
      */
     public boolean isAntiAliased() {
         return antiAliased;
     }
+
     /**
      * @param antiAliased The antiAliased to set.
      */
     public void setAntiAliased(boolean antiAliased) {
         this.antiAliased = antiAliased;
     }
+
     /**
      * @return Returns the printMoon.
      */
     public boolean isPrintMoon() {
-      return printMoon;
+        return printMoon;
     }
+
     /**
      * @param printMoon The printMoon to set.
      */
     public void setPrintMoon(boolean printMoon) {
-      this.printMoon = printMoon;
+        this.printMoon = printMoon;
     }
 }

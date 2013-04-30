@@ -39,20 +39,25 @@ import xiatian.pim.conf.PimConf;
 import xiatian.pim.domain.Journal;
 import xiatian.pim.io.PimDb;
 import xiatian.pim.listener.PimLog;
+import xiatian.pim.markdown.Markdown;
+import xiatian.pim.markdown.MarkdownProcessor;
 
 /**
  * 编辑视图
- * 
+ *
  * @author xiatian
- * 
  */
 public class EditPane extends RSyntaxTextArea {
+
+    /** set the reference for viewpane */
+    private ViewPane viewPane;
 
     private static final long serialVersionUID = 7945241122831275570L;
 
     HashMap<Object, Action> actions;
 
     public static Map<String, String> STYLES = new HashMap<String, String>();
+
     static {
         STYLES.put("NONE", SyntaxConstants.SYNTAX_STYLE_NONE);
         STYLES.put("XML", SyntaxConstants.SYNTAX_STYLE_XML);
@@ -155,7 +160,7 @@ public class EditPane extends RSyntaxTextArea {
 
     /**
      * 保存原来已经打开的笔记，并且设置当前内容为新笔记
-     * 
+     *
      * @param newJournal
      */
     public void setJournal(Journal newJournal) {
@@ -165,9 +170,9 @@ public class EditPane extends RSyntaxTextArea {
         }
         this.journal = newJournal;
         if (journal.isOpened()) {
-            super.setText(newJournal.getContent());
+            this.setText(newJournal.getContent());
         } else {
-            super.setText("当前记录已加密，尚未打开.");
+            this.setText("当前记录已加密，尚未打开.");
         }
         this.setCaretPosition(0);
 
@@ -175,6 +180,19 @@ public class EditPane extends RSyntaxTextArea {
 
     public Journal getCurrentJournal() {
         return this.journal;
+    }
+
+    @Override
+    public void setText(String text) {
+        super.setText(text);
+
+        MarkdownProcessor processor = new MarkdownProcessor();
+        String html = processor.markdown(text);
+        //String html = Markdown.parseMarkdownSource(text);
+        html = html.replaceAll("\n", " ");
+        viewPane.setText(html);
+//
+        viewPane.setText(html);
     }
 
     // //////////////////////////////////////////////
@@ -283,6 +301,10 @@ public class EditPane extends RSyntaxTextArea {
         menu.add(new StyledEditorKit.ForegroundAction("Black", Color.black));
 
         return menu;
+    }
+
+    public void setViewPane(ViewPane viewPane) {
+        this.viewPane = viewPane;
     }
 
     class UndoAction extends AbstractAction {

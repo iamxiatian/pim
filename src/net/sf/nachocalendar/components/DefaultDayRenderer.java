@@ -36,6 +36,7 @@
  */
 
 package net.sf.nachocalendar.components;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.util.Calendar;
@@ -46,16 +47,19 @@ import javax.swing.JList;
 
 /**
  * Default implementation of the DayRenderer interface.
+ *
  * @author Ignacio Merani
  */
 public class DefaultDayRenderer extends JLabel implements DayRenderer {
     private Calendar cal;
     private Color selectedbg, unselectedbg, selectedfg, unselectedfg, notworking;
-    
-    /** Creates a new instance of DefaultDayRenderer. */
+
+    /**
+     * Creates a new instance of DefaultDayRenderer.
+     */
     public DefaultDayRenderer() {
         cal = Calendar.getInstance();
-        
+
         // Fake solution: by now steal colors from a JList
         JList jl = new JList();
         unselectedbg = Color.white;
@@ -67,17 +71,18 @@ public class DefaultDayRenderer extends JLabel implements DayRenderer {
         setOpaque(true);
         notworking = new Color(240, 240, 255);
     }
-    
+
     /**
      * Returns a component configured to render the Day.
-     * @return component to be used
+     *
      * @param daypanel Daypanel to be renderer
-     * @param day current day
-     * @param data current data
+     * @param day      current day
+     * @param data     current data
      * @param selected true if it's selected
-     * @param working true if it's a working day
-     * @param enabled true if it's enabled
-     */    
+     * @param working  true if it's a working day
+     * @param enabled  true if it's enabled
+     * @return component to be used
+     */
     public Component getDayRenderer(DayPanel daypanel, Date day, Object data, boolean selected, boolean working, boolean enabled) {
         if (selected) {
             setBackground(selectedbg);
@@ -86,7 +91,7 @@ public class DefaultDayRenderer extends JLabel implements DayRenderer {
                 setBackground(unselectedbg);
             } else setBackground(notworking);
         }
-        
+
         if (working) {
             if (selected) {
                 setForeground(selectedfg);

@@ -39,27 +39,28 @@ import net.sf.nachocalendar.components.DatePanel;
 /**
  * Interface that must be implemented by
  * classes that set components properties.
+ *
  * @author Ignacio Merani
- *
- *
  */
 public interface PropertiesSetter {
 
     /**
      * Customizes a Datefield.
-     * 
+     *
      * @param datefield
      */
     public void customize(DateField datefield);
 
     /**
      * Customizes a CalendarPanel.
+     *
      * @param calendarpanel
      */
     public void customize(CalendarPanel calendarpanel);
 
     /**
      * Customizes a DatePanel.
+     *
      * @param datepanel
      */
     public void customize(DatePanel datepanel);

@@ -48,6 +48,7 @@ import net.sf.nachocalendar.model.DataModel;
 /**
  * Default implementation for HoliDayModel. It has a collection
  * to contain the holidays and convenient accesor methods.
+ *
  * @author Ignacio Merani
  */
 public class HoliDayModel implements DataModel {
@@ -56,8 +57,10 @@ public class HoliDayModel implements DataModel {
     private Calendar cal, check;
     private int currentmonth;
     private LinkedList minimumlist;
-    
-    /** Creates a new instance of DefaultHoliDayModel. */
+
+    /**
+     * Creates a new instance of DefaultHoliDayModel.
+     */
     public HoliDayModel() {
         holidays = new LinkedList();
         minimumlist = new LinkedList();
@@ -71,7 +74,7 @@ public class HoliDayModel implements DataModel {
             }
         };
     }
-    
+
     private void changeMonth(int month) {
         currentmonth = month;
         minimumlist.clear();
@@ -84,7 +87,7 @@ public class HoliDayModel implements DataModel {
             }
         }
     }
-    
+
     private boolean compare(HoliDay h, int year, int month, int day) {
         cal.setTime(h.getDate());
         if (!h.isRecurrent()) {
@@ -100,9 +103,10 @@ public class HoliDayModel implements DataModel {
         }
         return true;
     }
-    
+
     /**
      * Adds a new holiday to the Collection.
+     *
      * @param day the new holiday
      */
     public void addHoliDay(HoliDay day) {
@@ -111,49 +115,54 @@ public class HoliDayModel implements DataModel {
             Collections.sort(holidays, sorter);
         }
     }
-    
+
     /**
      * Removes the provided holiday from the Collection.
+     *
      * @param day holiday to be removed
      */
     public void removeHoliDay(HoliDay day) {
         holidays.remove(day);
     }
-    
+
     /**
      * Returns the quantity of holidays in the Collection.
+     *
      * @return the size of the Collection
      */
     public int getSize() {
         return holidays.size();
     }
-    
+
     /**
      * Returns a Collection with the Holidays.
+     *
      * @return Collection with the Holidays
      */
     public Collection getAll() {
         return (Collection) holidays.clone();
     }
-    
+
     /**
      * Removes all holidays from the Collection.
      */
     public void clear() {
         holidays.clear();
     }
-    
+
     /**
      * Returns the data asociated with the provided date.
+     *
      * @param date date provided
      * @return the data asociated or null
      */
     public Object getData(Date date) {
         return getHoliDay(date);
     }
-    
+
     /**
      * Checks if the date provided is holiday.
+     *
      * @param date Date to be checked
      * @return the holiday or null if it's not a holiday
      */
@@ -166,7 +175,7 @@ public class HoliDayModel implements DataModel {
             changeMonth(month);
         }
         Iterator it = minimumlist.iterator();
-        
+
         while (it.hasNext()) {
             HoliDay h = (HoliDay) it.next();
             if (compare(h, year, month, day)) {

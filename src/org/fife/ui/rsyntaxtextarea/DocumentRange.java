@@ -32,22 +32,22 @@ package org.fife.ui.rsyntaxtextarea;
 public interface DocumentRange {
 
 
-	/**
-	 * Gets the end offset of the range.
-	 *
-	 * @return The end offset.
-	 * @see #getStartOffset()
-	 */
-	public int getEndOffset();
+    /**
+     * Gets the end offset of the range.
+     *
+     * @return The end offset.
+     * @see #getStartOffset()
+     */
+    public int getEndOffset();
 
 
-	/**
-	 * Gets the starting offset of the range.
-	 *
-	 * @return The starting offset.
-	 * @see #getEndOffset()
-	 */
-	public int getStartOffset();
+    /**
+     * Gets the starting offset of the range.
+     *
+     * @return The starting offset.
+     * @see #getEndOffset()
+     */
+    public int getStartOffset();
 
 
 }

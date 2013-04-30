@@ -38,29 +38,34 @@ import java.util.Date;
 /**
  * Interface that must be implemented to show a Task using the
  * TaskDataModel.
+ *
  * @author Ignacio Merani
  */
 public interface Task {
     /**
      * Returns the Date of this task.
+     *
      * @return Returns the date.
      */
     Date getDate();
-    
+
     /**
      * Sets the date of this task.
+     *
      * @param date The date to set.
      */
     void setDate(Date date);
-    
+
     /**
      * Returns the name of this task.
+     *
      * @return Returns the name.
      */
     String getName();
-    
+
     /**
      * Sets the name of this task.
+     *
      * @param name The name to set.
      */
     void setName(String name);

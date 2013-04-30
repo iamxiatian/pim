@@ -78,7 +78,7 @@ public class PimDb {
 
     /**
      * 创建数据库
-     * 
+     *
      * @throws Exception
      */
     public void setup() throws Exception {
@@ -151,7 +151,7 @@ public class PimDb {
 
     /**
      * 注意第一个节点不能是注释节点
-     * 
+     *
      * @param xmlFile
      * @return
      * @throws Exception
@@ -423,7 +423,7 @@ public class PimDb {
 
     /**
      * 注意第一个节点不能是注释节点
-     * 
+     *
      * @param xmlFile
      * @return
      * @throws Exception
@@ -1001,7 +1001,7 @@ public class PimDb {
                     importFromDir(id, f);
                     index++;
                 } else {
-                    for (String suffix : new String[] { ".txt", ".py", ".xml", ".cpp", ".properties", ".ini", ".html", ".htm", ".c", ".java" }) {
+                    for (String suffix : new String[]{".txt", ".py", ".xml", ".cpp", ".properties", ".ini", ".html", ".htm", ".c", ".java"}) {
                         if (name.toLowerCase().endsWith(suffix)) {
                             try {
                                 System.out.println("import:" + f.getAbsolutePath());

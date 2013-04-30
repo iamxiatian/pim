@@ -48,27 +48,29 @@ import net.sf.nachocalendar.components.FormatSymbols;
 
 /**
  * Factory class used to obtain objects customized to show Tasks.
- * 
+ *
  * @author Ignacio Merani
  */
 public final class TaskCalendarFactory {
     private static DateFormatter requiredFormatter = new DateFormatter(); // setup
-                                                                          // a
-                                                                          // default
-                                                                          // formatter
+    // a
+    // default
+    // formatter
 
     private static Locale requiredLocale = new java.util.Locale(""); // setup a
-                                                                     // default
-                                                                     // locale
+    // default
+    // locale
 
-    /** Default constructor. */
+    /**
+     * Default constructor.
+     */
     private TaskCalendarFactory() {
 
     }
 
     /**
      * Returns a formatted DateField.
-     * 
+     *
      * @return a new formatted DatePanel
      */
     public static DateField createDateField(String formatter, Locale userLocale) {
@@ -84,7 +86,7 @@ public final class TaskCalendarFactory {
 
     /**
      * Returns a new DateField customized to show Tasks.
-     * 
+     *
      * @return a new DateField
      */
     public static DateField createDateField() {
@@ -101,7 +103,7 @@ public final class TaskCalendarFactory {
 
     /**
      * Returns a new CalendarPanel customized to show Tasks.
-     * 
+     *
      * @return a new CalendarPanel
      */
     public static CalendarPanel createCalendarPanel() {
@@ -112,15 +114,13 @@ public final class TaskCalendarFactory {
 
     /**
      * Returns a new CalendarPanel customized to show Tasks.
-     * 
-     * @param quantity
-     *            quantity of months to show
-     * @param orientation
-     *            the orientation
+     *
+     * @param quantity    quantity of months to show
+     * @param orientation the orientation
      * @return a new CalendarPanel
      */
     public static CalendarPanel createCalendarPanel(int quantity,
-            int orientation) {
+                                                    int orientation) {
         CalendarPanel retorno = new CalendarPanel(quantity, orientation);
         configureCalendarPanel(retorno);
         return retorno;
@@ -128,9 +128,8 @@ public final class TaskCalendarFactory {
 
     /**
      * Returns a new CalendarPanel customized to show Tasks.
-     * 
-     * @param quantity
-     *            quantity of months to show
+     *
+     * @param quantity quantity of months to show
      * @return a new CalendarPanel
      */
     public static CalendarPanel createCalendarPanel(int quantity) {
@@ -148,7 +147,7 @@ public final class TaskCalendarFactory {
 
     /**
      * Returns a new DatePanel customized to show Tasks.
-     * 
+     *
      * @return a new DatePanel
      */
     public static DatePanel createDatePanel() {
@@ -159,9 +158,8 @@ public final class TaskCalendarFactory {
 
     /**
      * Returns a new DatePanel customized to show Tasks.
-     * 
-     * @param showWeekNumbers
-     *            true to show week numbers
+     *
+     * @param showWeekNumbers true to show week numbers
      * @return a new DatePanel
      */
     public static DatePanel createDatePanel(boolean showWeekNumbers) {

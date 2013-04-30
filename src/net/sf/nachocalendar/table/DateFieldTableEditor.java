@@ -45,55 +45,53 @@ import net.sf.nachocalendar.components.DateField;
 
 /**
  * @author Ignacio Merani
- * 
  */
 public class DateFieldTableEditor extends AbstractCellEditor implements TableCellEditor {
-  private static final long serialVersionUID = 4722720648096661121L;
-  private DateField datefield;
+    private static final long serialVersionUID = 4722720648096661121L;
+    private DateField datefield;
 
-  /**
-   * Default constructor.
-   */
-  public DateFieldTableEditor() {
-    super();
-    datefield = new DateField();
-  }
-
-  /**
-   * Constructor specifying the DateField to use.
-   * 
-   * @param datefield
-   *          DateField to use
-   */
-  public DateFieldTableEditor(DateField datefield) {
-    super();
-    this.datefield = datefield;
-  }
-
-  /**
-   * @see javax.swing.table.TableCellEditor#getTableCellEditorComponent(javax.swing.JTable,
-   *      java.lang.Object, boolean, int, int)
-   */
-  public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int col) {
-    datefield.setValue(value);
-    return datefield;
-  }
-
-  /**
-   * @see javax.swing.CellEditor#getCellEditorValue()
-   */
-  public Object getCellEditorValue() {
-    return datefield.getValue();
-  }
-
-  /**
-   * @see javax.swing.CellEditor#isCellEditable(java.util.EventObject)
-   */
-  public boolean isCellEditable(EventObject evt) {
-    if (evt instanceof MouseEvent) {
-      MouseEvent me = (MouseEvent) evt;
-      return (me.getClickCount() > 1);
+    /**
+     * Default constructor.
+     */
+    public DateFieldTableEditor() {
+        super();
+        datefield = new DateField();
     }
-    return super.isCellEditable(evt);
-  }
+
+    /**
+     * Constructor specifying the DateField to use.
+     *
+     * @param datefield DateField to use
+     */
+    public DateFieldTableEditor(DateField datefield) {
+        super();
+        this.datefield = datefield;
+    }
+
+    /**
+     * @see javax.swing.table.TableCellEditor#getTableCellEditorComponent(javax.swing.JTable,
+     *      java.lang.Object, boolean, int, int)
+     */
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int col) {
+        datefield.setValue(value);
+        return datefield;
+    }
+
+    /**
+     * @see javax.swing.CellEditor#getCellEditorValue()
+     */
+    public Object getCellEditorValue() {
+        return datefield.getValue();
+    }
+
+    /**
+     * @see javax.swing.CellEditor#isCellEditable(java.util.EventObject)
+     */
+    public boolean isCellEditable(EventObject evt) {
+        if (evt instanceof MouseEvent) {
+            MouseEvent me = (MouseEvent) evt;
+            return (me.getClickCount() > 1);
+        }
+        return super.isCellEditable(evt);
+    }
 }
